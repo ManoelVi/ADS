@@ -48,6 +48,31 @@ public class PROJECT {
                     "Lucas");
             case "Sair":
                 System.exit(0);        
+        }    
+    }
+    
+    public static void Status(int[] status,String local, String escolha, boolean poder){
+        System.out.println("Vida:" + status[1] +"\n" +
+            "Resistencia:" + status[2] + "\n" +
+            "Local: " + local);
+        
+        System.out.println("Escolhas:");
+        
+        if (escolha.equals("Movimentação")){
+            System.out.println("Norte\n" +
+                "Leste\n" +
+                "Oeste\n" +
+                "Sul");
+        }else if(escolha.equals("Combate")){
+            System.out.println("Atacar\n" +
+                "Fugir\n" +
+                "Esquivar");
+        }
+        
+        System.out.println("");
+        if(poder){
+            System.out.println("Seu poder pode ser usado!");
         }
     }
+    
 }
