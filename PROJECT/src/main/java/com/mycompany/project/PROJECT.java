@@ -222,5 +222,5 @@ public class PROJECT {
         System.out.println("Bem, finalizamos o treinamento.\n"
                 + "Boa sorte na sua próxima missão soldado!");
     }
-    
+
 }
