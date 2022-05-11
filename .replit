@@ -1,1 +1,5 @@
 language = "bash"
+<<<<<<< HEAD
+=======
+run = ""
+>>>>>>> e61f72d83e56421dbcb8e7160aa8972b75a9eea9
