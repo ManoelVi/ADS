@@ -12,7 +12,7 @@ import java.util.Scanner;
  * @author Rael
  */
 public class PROJECT {
-    
+    public static int[] Status;
     
     public static void main(String[] args) {
         System.out.println("*INICIO*");
@@ -572,4 +572,5 @@ public class PROJECT {
 		return caminho;
 			
 	}
+  
 }
