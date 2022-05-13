@@ -572,5 +572,10 @@ public class PROJECT {
 		return caminho;
 			
 	}
-  
+
+  public static void Fase3Chefe(){
+    lcResp = Repeticao("Vamos atrás do maioral deste planeta imundo, Vamos para NORTE agora","NORTE");
+
+    
+  }
 }
