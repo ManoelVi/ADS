@@ -15,6 +15,10 @@ public class PROJECT {
     public static int[] Status;
     
     public static void main(String[] args) {
+      Status[0] = 50;//vida
+	    Status[1] = 10;//balas
+	    Status[2] = 2;//mana
+	    Status[3] = 0;//chave
         System.out.println("*INICIO*");
         String lcResp;
         Scanner scan = new Scanner(System.in);
@@ -29,6 +33,33 @@ public class PROJECT {
                 Config(lcResp); 
             }
     }
+      public static void dano1(int a) {
+  		status[0] = status[0] - 5;
+  	}
+  	public static void dano2(int a) {
+  		status[0] = status[0] - 10;		
+  	}
+  	public static void atirar(int a) {
+  		status[1] = status[1] - 1;
+  	}
+  	public static void recarregar(int a) {
+  		status[1] = 10;
+  	}
+  	public static void poção(int a) {
+  		status[0]= status[0] + 20;
+  	}
+  	public static void MenosMana(int a) {
+  		status[2]= status[2] -1;
+  	}
+  	public static void PoteMana(int a) {
+  		status[2]= 2;
+  	}
+  	public static void chave(int a) {
+  		status[3]= 1;
+  	}
+  	public static void MenosChave(int a) {
+  		status[3]= status[3] - 1;
+  	}
     
     public static void Iniciar(){
         
