@@ -244,12 +244,18 @@ public class PROJECT {
       return false;
     }
   }
-  public static void fundo (int a) {
+  }
+	public static void fundo (int a) {
 		Scanner scan = new Scanner(System.in);
 		int t = 1;
 		int balas = 10;
 		int vida = 50;
-		if (t == a) {
+		if (t == 1) {
+			System.out.println("General- Conseguimos informaçoes que o cientista esta preso em uma instalação\n"
+					+ ", sua missão sera resgatar e traze-lo com vida, ele é essencial para o sucesso an guerra\n"
+					+ "e sem ele nosso planeta corre serios riscos, você irá entrar pelos fundos furtivamente\n"
+					+ ", devera entrar e sair sem alertar, seu companheiro dara um jeito de chamar atençao dos guardas\n"
+					+ "para eles sairem e facilitar sua entrada e saida, boa sorte!.");
 			System.out.println("O seu companheiro está chamando atençao para distrair os guardas, \n"
 					+ "você escolhe o: \ncaminho 1(ir pelos fundos)\ncaminho2(entrar pelo tunel do esgoto?)");
 			t = scan.nextInt();
@@ -496,44 +502,42 @@ public class PROJECT {
 		Scanner scan = new Scanner(System.in);
 		int t = 0;
 		int caminho = 0;
-		int t2 = 0;
+		int t2 = 1;
 		int vida = 40;
 		int poção = 1;
-		while (t2 != 1) {
-			System.out.println("Você se encontra em uma sala com três portas, norte, sul e leste,e uma a Oeste para voltar de onde veio.\nPara qual você deseja ir?\n"
-					+ "Norte(1)\nLeste(2)\nSul(3)\nOeste(4)");
+		while(t2 != 0) {
+			System.out.println("norte(1)\nleste(2)\noeste(3)\nsul(4)");
 			t = scan.nextInt();
-			if (t == 1) {
+			if(t == 1) {
 				System.out.println("a sala esta vazia, voce volta para a sala anterior");
-			}else if (t == 2) {
-				if (poção == 1) {
+			}else if(t == 2) {
 				System.out.println("Você encontra uma poção de cura, voce deseja tomar?\nSim(1)\nNão(2)");
 				t = scan.nextInt();
-					if (t == 1) {
-						System.out.println("Sua vida foi regenerada, você volta para a sala anterior");
-						vida = 50;
-					}else
-						System.out.println("Você volta para a sala anterior");
+				if (t == 1) {
+					System.out.println("Sua vida foi regenerada, você volta para a sala anterior");
+					vida = 50;
 				}else
-					System.out.println("Sala vazia, você volta para a sala anteior");
-			}else if(t == 3){
+					System.out.println("Você volta para a sala anterior");
+			}else if(t == 3) {
 				System.out.println("Você passa para outra sala");
 				caminho = 5;
-				t2 = 1;
-			}else
-				System.out.println("Você volta para o corredor");
+				return caminho;
+			}else if(t == 4){
+				System.out.println("Voce volta para o corredor");
 				caminho = 3;
-				t2 = 1;
+				return caminho;
+			}else
+				System.out.println("Comando errado");
+				
 		}
-			return caminho;
-			
+		return caminho;
 	}//fim caminho 4
 	
 	public static int caminho5(int a) {
 		Scanner scan = new Scanner(System.in);
 		int t = 0;
 		int caminho = 0;
-		int t2 = 0;
+		int t2 = 2;
 		int c = 1;
 		while (t2 != 1) {
 			System.out.println("Você se encontra em uma sala com três portas, norte, sul e leste,e uma a Oeste para voltar de onde veio.\nPara qual você deseja ir?\n"
@@ -552,13 +556,18 @@ public class PROJECT {
 						System.out.println("Você volta para a sala anterior");
 				}else
 					System.out.println("Sala vazia, você volta para a sala anteior");
-			}else
+			}else if(t == 3){
 				System.out.println("Você avança para a proxima sala!");
 				caminho = 6;
-		}
+				return caminho;
+		}else {
+			System.out.println("codigo errado");
 			return caminho;
-			
-	}//fim caminho 5
+		}			
+		}
+		return caminho;
+	}
+	//fim caminho 5
 	
 	public static int caminho6(int a) {
 		Scanner scan = new Scanner(System.in);
@@ -567,11 +576,11 @@ public class PROJECT {
 		int caminho = 0;
 		if (t == 1) {
 			caminho = 8;
-		}else
-			caminho = 5;
+		}else {
+			caminho = 5;}
 		return caminho;
 			
-	}
+	}//fim caminho 6
 
   public static void Fase3Chefe(){
     lcResp = Repeticao("Vamos atrás do maioral deste planeta imundo, Vamos para NORTE agora","NORTE");
