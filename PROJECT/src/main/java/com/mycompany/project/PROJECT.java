@@ -261,7 +261,7 @@ public class PROJECT {
       System.out.println(Texto);
       lcRosa = scan.next().toUpperCase();
 
-    }while(!lcRosa.contains(Resp.toUpperCase()));
+    }while(!Resp.contains(lcRosa.toUpperCase());
 
     return lcRosa;
   }
@@ -614,7 +614,7 @@ public class PROJECT {
 	}//fim caminho 6
 
   public static void Fase3Chefe(){
-    lcResp = Repeticao("Vamos atrás do maioral deste planeta imundo, Vamos para NORTE agora","NORTE");
+    String resp = Repeticao("Vamos atrás do maioral deste planeta imundo, Vamos para NORTE agora","NORTE");
     
     Fase3Caminho1();
   }
@@ -635,7 +635,7 @@ public static void Fase3Caminho2(){
 
   System.out.println("-Perfeita luta soldado!");
 
-  Repeticao("-Vamos avançar para NORTE, ele está trancado em umas das próximas salas","NORTE");
+  String resp = Repeticao("-Vamos avançar para NORTE, ele está trancado em umas das próximas salas","NORTE");
 }
 
 public static void Fase3Caminho3(){
@@ -643,20 +643,20 @@ public static void Fase3Caminho3(){
   Status[1] += 30;
   System.out.println("Você pegou cerca de 30 balas.")
 
-  Repeticao("-Vamos avançar para NORTE e ver o que pode ter lá","NORTE");
+  String resp = Repeticao("-Vamos avançar para NORTE e ver o que pode ter lá","NORTE");
 
   Fase3Caminho4()
 }
 
 public static void Fase3Caminho4(){
-  Repeticao("Aqui a somente uma chave, digite PEGAR para adquirir a chave","PEGAR");
+  String resp = Repeticao("Aqui a somente uma chave, digite PEGAR para adquirir a chave","PEGAR");
 
   if(Status[3] <= 0){
     System.out.println("-Pegou a chave");
     Status[3] = 1
   }
 
-  Repeticao("Não temos mais nada por aqui, vamos voltar pra SUL","SUL");
+  resp = Repeticao("Não temos mais nada por aqui, vamos voltar pra SUL","SUL");
 
   Fase3Caminho1();
   
