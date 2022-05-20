@@ -615,7 +615,75 @@ public class PROJECT {
 
   public static void Fase3Chefe(){
     lcResp = Repeticao("Vamos atrás do maioral deste planeta imundo, Vamos para NORTE agora","NORTE");
-
     
+    Fase3Caminho1();
   }
+
+public static void Fase3Caminho1(){
+    System.out.println("-Você está em um salão grande e vazio e aparentemente sem inimigos /n"+
+                       "-Na sala parece que aconteceu uma intensa luta, com uma gosma estranha(Provavel sangue dos mesmos) /n");
+    String resp = Repeticao("- Tem Salas tanto para a OESTE quanto para LESTE","LESTE,OESTE");
+
+    if(resp.equals("LESTE")){
+      Fase3Caminho2();
+    }else{
+      Fase3Caminho3();
+    }
+  }
+public static void Fase3Caminho2(){
+  Wave();
+
+  System.out.println("-Perfeita luta soldado!");
+
+  Repeticao("-Vamos avançar para NORTE, ele está trancado em umas das próximas salas","NORTE");
+}
+
+public static void Fase3Caminho3(){
+  Repeticao("-Está sala tem muita munição, pegue quanto for necessário","PEGAR");
+  Status[1] += 30;
+  System.out.println("Você pegou cerca de 30 balas.")
+
+  Repeticao("-Vamos avançar para NORTE e ver o que pode ter lá","NORTE");
+
+  Fase3Caminho4()
+}
+
+public static void Fase3Caminho4(){
+  Repeticao("Aqui a somente uma chave, digite PEGAR para adquirir a chave","PEGAR");
+
+  if(Status[3] <= 0){
+    System.out.println("-Pegou a chave");
+    Status[3] = 1
+  }
+
+  Repeticao("Não temos mais nada por aqui, vamos voltar pra SUL","SUL");
+
+  Fase3Caminho1();
+  
+}
+
+public static void Fase3Caminho5(){
+  System.out.println("Bom, parece que estamos chegando no fim da linha. /n Queria dizer que independente do resultado da próxima batalha, /n fui um prazer lutar essa guerra com você!");
+
+  String lcResp = Repeticao("Está preparado?","SIM,NÃO");
+
+  if (lcResp == "SIM"){
+    Status[3] = Status[3] - 1
+    System.out.println("-Sua chave foi gasta!");
+
+    System.out.println("Parece que vem alguns inimigos por aí!, vamos ter que lutar!");
+    Wave();
+
+    System.out.println("Mandou bem, acho que não preciso mais te chamar de soldado, /n quando voltarmos talvez seja coronel ou mais agora!(Risos)");
+    
+    Fase3Final();
+    
+  }else{
+    Fase3Caminho1();
+  }
+}
+public static void Fase3Final(){
+  
+}
+    
 }
