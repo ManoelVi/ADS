@@ -13,6 +13,7 @@ import java.util.Scanner;
  */
 public class PROJECT {
     public static int[] Status;
+    public static String Nome = "";
     Scanner scan = new Scanner(System.in);
     
     public static void main(String[] args) {
@@ -24,7 +25,8 @@ public class PROJECT {
       Status[5] = 3;//PoteMana
       Status[6] = 3;//PoteVida
       Status[7] = 3;//Granadas
-      Status[8] = 0;
+      Status[8] = 0;//fase
+      Status[9] = 0;//poder
     }
       public static void dano1(int a) {
   		status[0] = status[0] - 5;
@@ -221,122 +223,404 @@ public class PROJECT {
     }
   }
   }
-	public static void Fundo (int a) {
-    Status[8] = 31;
+	public static void fundo (int a) {
+		Scanner scan = new Scanner(System.in);
 		int t = 1;
 		int balas = 10;
 		int vida = 50;
+		int fim = 0;
+		String resp = "";
+		System.out.println("voce decidiu entrar pelos fundos.");
+		t = 1;
 		if (t == 1) {
-			System.out.println("General- Conseguimos informaçoes que o cientista esta preso em uma instalação,\n"
-					+ "sua missão será resgatar e traze-lo com vida, ele é essencial para o sucesso nesta guerra\n"
-					+ "e sem ele nosso planeta corre sérios riscos, você irá entrar pelos fundos furtivamente,\n"
-					+ "devera entrar e sair sem alertar, seu companheiro dara um jeito de chamar atençao dos guardas\n"
-					+ "para eles sairem e facilitar sua entrada e saida, boa sorte!.");
-			System.out.println("O seu companheiro está chamando atençao para distrair os guardas, \n"
-					+ "você escolhe o: \ncaminho 1(ir pelos fundos)\ncaminho2(entrar pelo tunel do esgoto?)");
-			t = scan.nextInt();
-			if (t == 1) {
-				System.out.println("voce decidiu entrar pelos fundos. Você se depara com dois guardas guardando o portao. \n"
-						+ "existe uma caixa a direita e uma a esquerda, o guarda da esqueda olha na direção do segundo guarda \n"
-						+ "o outro guarda olha para a frente, existe uma  chance de chegar pelas costas de um dos dois\n"
-						+ ". Por qual caixa você deseja seguir? \nEsquerda(1)\nDireita(2)");
-				t = scan.nextInt();
-				if (t == 1) {
-					System.out.println("Você se aproxima do alvo da esquerda, deseja abate-lo: \n furtivamente(1)\nCom sua arma(2)");
-					t = scan.nextInt();
-					if (t == 1) {
-						System.out.println("você conseguiu abate-lo furtivamente, você deseja chegar perto do segundo:\n"
-								+ "Aproximar-se furtivamente(1)\nAtirar nele de longe(2)");
+			System.out.println("Você se depara com dois guardas guardando o portao. \n"
+					+ "existe uma caixa a direita e uma a esquerda, o guarda da esqueda olha na direção do segundo guarda \n"
+					+ "o outro guarda olha para a frente, existe uma  chance de chegar pelas costas de um dos dois\n"
+					+ ". Por qual caixa você deseja seguir?");
+			while(fim == 0) {
+				System.out.println("1-ESQUERDA\n2-DIREITA");
+				resp = scan.nextLine().toUpperCase();
+				if(resp.equals("ESQUERDA")) {
+					resp = "ESQUERDA";
+					fim = 1;	
+				}else if(resp.equals("DIREITA")) {
+					resp = "DIREITA";
+					fim = 1;
 					}
+			}fim = 0;
+			if (resp.equals("ESQUERDA")) {
+				System.out.println("Você se aproxima do alvo da esquerda, deseja abate-lo:");
+				while(fim == 0) {
+					System.out.println("1-FURTIVAMENTE\n2-ATIRAR");
+					resp = scan.nextLine().toUpperCase();
+					if(resp.equals("FURTIVAMENTE")) {
+						t = 1;
+						fim = 1;	
+					}else if(resp.equals("ATIRAR")) {
+						t = 2;
+						fim = 1;
+						}
+				}fim = 0;
+				if (t == 1) {
+					System.out.println("você conseguiu abate-lo furtivamente, você deseja chegar perto do segundo:\n"
+							+ "Aproximar-se furtivamente(1)\nAtirar nele de longe(2)");
 					if(t == 1) {
-						System.out.println("Voce consegue se aproximar do segundo guarda sem ser visto, deseja abate-lo\n"
-								+ "furtivamente(1)\natirar nele(2)?");
-								t = scan.nextInt();
+						System.out.println("Voce consegue se aproximar do segundo guarda sem ser visto, deseja abate-lo");
+						while(fim == 0) {
+							System.out.println("1-FURTIVAMENTE\n2-ATIRAR");
+							resp = scan.nextLine().toUpperCase();
+							if(resp.equals("FURTIVAMENTE")) {
+								t = 1;
+								fim = 1;	
+							}else if(resp.equals("ATIRAR")) {
+								t = 2;
+								fim = 1;
+								}
+						}fim = 0;
 								if (t == 1) {
 									System.out.println("Voce consegue abater o alvo furitvamente");
 								}else
 									System.out.println("Voce consegue abater o alvo, mas perde uma bala");
-									balas --;
-						
+									atirar(1);			
 					}else
 						System.out.println("Voce consegue eliminar o segundo guarda com sua arma, mas perde uma bala");
-						balas --;
+						atirar(1);
+				}
 						
 						
 				//caminho 2, usando a arma
 					
-				}else {
-					System.out.println("Você consegue abater o primeiro guarda, porem o segundo te nota devido ao barulho de sua arma,\n"
-							+ "antes que voce consiga fazer algo, ele consegue te acertar um tiro, voce deseja: \natirar nele de volta(1)\n"
-							+ "correr na sua direção(2)?");
-					balas --;
-					vida =vida - 5;
-					t = scan.nextInt();
-					if (t == 1) {
-						System.out.println("voce consegue eliminar o segundo guarda, mas perde uma bala");
-						balas --;
-					}else
-						System.out.println("enquanto voce corre na direção dele, voce toma outro tiro e perde vida\n "
-								+ "ao chegar perto, voce deseja: \nabate-lo com as maos(1)\n Abate-locom um tiro(2)?");
-						vida = vida - 5;
-						t = scan.nextInt();
-						if (t == 1) {
-							System.out.println("voce conseguiu abater o primeiro inimigo");
-						}else {
-							System.out.println("Voce conseguiu abater o inimigo, porem gastou uma bala");
-							balas --;
-						}
-				
-				}
 			}else {
-				System.out.println("Voce consegue chegar no guarda sem ser visto\nabate-lo furtivamente (1)\n abalte-lo usando sua arma (2)?");
+				System.out.println("Você consegue abater o primeiro guarda, porem o segundo te nota devido ao barulho de sua arma,\n"
+						+ "antes que voce consiga fazer algo, ele consegue te acertar um tiro, voce deseja: \natirar nele de volta(1)\n"
+						+ "correr na sua direção(2)?");
+				atirar(1);
+				dano1(1);
+				while(fim == 0) {
+					System.out.println("1-ATIRAR\n2-CORRER");
+					resp = scan.nextLine().toUpperCase();
+					if(resp.equals("ATIRAR")) {
+						t = 1;
+						fim = 1;	
+					}else if(resp.equals("CORRER")) {
+						t = 2;
+						fim = 1;
+						}
+				}fim = 0;
+				if (t == 1) {
+					System.out.println("voce consegue eliminar o segundo guarda, mas perde uma bala");
+					atirar(1);
+				}else
+					System.out.println("enquanto voce corre na direção dele, voce toma outro tiro e perde vida\n "
+							+ "ao chegar perto, voce deseja: \nabate-lo com as maos(1)\n Abate-lo com um tiro(2)?");
+					dano1(2);
+					while(fim == 0) {
+						System.out.println("1-ABATER\n2-ATIRAR");
+						resp = scan.nextLine().toUpperCase();
+						if(resp.equals("ABATER")) {
+							t = 1;
+							fim = 1;	
+						}else if(resp.equals("ATIRAR")) {
+							t = 2;
+							fim = 1;
+							}
+					}fim = 0;
+					if (t == 1) {
+						System.out.println("voce conseguiu abater o primeiro inimigo");
+					}else {
+						System.out.println("Voce conseguiu abater o inimigo, porem gastou uma bala");
+						atirar(1);
+					}
+				
+			}
+		}else {
+			System.out.println("Voce consegue chegar no guarda sem ser visto\nabate-lo furtivamente (1)\n abalte-lo usando sua arma (2)?");
+			while(fim == 0) {
+				System.out.println("1-FURTIVAMENTE\n2-ATIRAR");
+				resp = scan.nextLine().toUpperCase();
+				if(resp.equals("FURTIVAMENTE")) {
+					t = 1;
+					fim = 1;	
+				}else if(resp.equals("ATIRAR")) {
+					t = 2;
+					fim = 1;
+					}
+			}fim = 0;
+			if (t == 1) {
+				System.out.println("Voce consegue abater o guarda, porem o segundo guarda te ve pois estava olhando em sua direção. \n"
+						+ "Antes que voce possa fazer algo, ele te acerta um tiro. Voce deseja: \natirar nele (1)\ncorrer em sua direção (2)?");
+				dano1(1);
 				t = scan.nextInt();
 				if (t == 1) {
-					System.out.println("Voce consegue abater o guarda, porem o segundo guarda te ve pois estava olhando em sua direção. \n"
-							+ "Antes que voce possa fazer algo, ele te acerta um tiro. Voce deseja: \natirar nele (1)\ncorrer em sua direção (2)?");
-					vida = vida - 5;
-					t = scan.nextInt();
-					if (t == 1) {
-						System.out.println("Voce consegue abater o segundo, porem perde uma bala");
-						balas --;
-					}else {
-						System.out.println("Voce corre na direção do inimigo, porem ele te acerta um tiro no caminho. Ao chegar la"
-								+ ", voce deseja: \natirar (1)\nabate-lo com um soco(2)?");
-						vida = vida - 5;
-						t = scan.nextInt();
-						if (t == 1) {
-							System.out.println("Voce consegue abater o segundo guarda, porem gasta munição");
-							balas --;
-						}else
-							System.out.println("Voce consegue abater o guarda com um soco");
-					}
-					// caminho usando a arma
+					System.out.println("Voce consegue abater o segundo, porem perde uma bala");
+					atirar(1);
 				}else {
-					System.out.println("Voce consegue abater o guarda, porem o segundo guarda consegue ver.\n"
-							+ "Antes que voce possa fazer algo, ele te acerta um tiro. Voce deseja: \natirar nele (1) \ncorrer em sua direção (2)?");
-					vida = vida - 5;
-					t = scan.nextInt();
+					System.out.println("Voce corre na direção do inimigo, porem ele te acerta um tiro no caminho. Ao chegar la"
+							+ ", voce deseja: \natirar (1)\nabate-lo com as mãos(2)?");
+					dano2(1);
+					while(fim == 0) {
+						System.out.println("1-ATIRAR\n2-ABATER");
+						resp = scan.nextLine().toUpperCase();
+						if(resp.equals("ATIRAR")) {
+							t = 1;
+							fim = 1;	
+						}else if(resp.equals("ABATER")) {
+							t = 2;
+							fim = 1;
+							}
+					}fim = 0;
 					if (t == 1) {
-						System.out.println("voce consegue eliminar o segundo guarda, mas perde uma bala");
-						balas --;
+						System.out.println("Voce consegue abater o segundo guarda, porem gasta munição");
+						atirar(1);
 					}else
-						System.out.println("enquanto voce corre na direção dele, voce toma outro tiro e perde vida\n "
-								+ "ao chegar perto, voce deseja: \nabate-lo com as maos(1)\n abate-lo com um tiro(2)?");
-						vida = vida - 5;
-						t = scan.nextInt();
-						if (t == 1) {
-							System.out.println("voce conseguiu abater o primeiro inimigo");
-						}else
-							System.out.println("Voce conseguiu abater o inimigo, porem gastou uma bala");
-							balas --;
+						System.out.println("Voce consegue abater o guarda com um soco");
+				}
+				// caminho usando a arma
+			}else {
+				System.out.println("Voce consegue abater o guarda, porem o segundo guarda consegue ver.\n"
+						+ "Antes que voce possa fazer algo, ele te acerta um tiro. Voce deseja: \natirar nele (1) \ncorrer em sua direção (2)?");
+				dano1(1);
+				t = scan.nextInt();
+				if (t == 1) {
+					System.out.println("voce consegue eliminar o segundo guarda, mas perde uma bala");
+					atirar(1);
+				}else
+					System.out.println("enquanto voce corre na direção dele, voce toma outro tiro e perde vida\n "
+							+ "ao chegar perto, voce deseja: \nabate-lo com as maos(1)\n abate-lo com um tiro(2)?");
+					dano1(1);
+					while(fim == 0) {
+						System.out.println("1-ABATER\n2-ATIRAR");
+						resp = scan.nextLine().toUpperCase();
+						if(resp.equals("ABATER")) {
+							t = 1;
+							fim = 1;	
+						}else if(resp.equals("ATIRAR")) {
+							t = 2;
+							fim = 1;
+							}
+					}fim = 0;
+					if (t == 1) {
+						System.out.println("voce conseguiu abater o primeiro inimigo");
+					}else
+						System.out.println("Voce conseguiu abater o inimigo, porem gastou uma bala");
+						atirar(1);
 							
-				}	
-			}//primeiro if/else
-		}//if fundo
+					}	
+				}//primeiro if/else
+			}
 		
-	}//fundo
-	
-	
+	public static String FASE3(int a) {
+		Scanner scan = new Scanner(System.in);
+		String resp = "";
+    Status[8] = 3;
+		int fim = 0;
+		System.out.println("General- Conseguimos informaçoes que o cientista esta preso em uma instalação\n"
+				+", sua missão sera resgatar e traze-lo com vida, ele é essencial para o sucesso an guerra\n"
+				+ "e sem ele nosso planeta corre serios riscos, você irá entrar furtivamente\n"
+				+ ", devera entrar e sair sem alertar, seu companheiro dara um jeito de chamar atençao dos guardas\n"
+				+ "para eles sairem e facilitar sua entrada e saida. Localizamos duas possiveis entradas, \n"
+				+ "uma pelos fundos, e outra pelos esgotos abaixo da instalação, para qual voce deseja ir?");
+		while(fim == 0) {
+			System.out.println("1-FUNDO\n2-ESGOTO");
+			resp = scan.nextLine().toUpperCase();
+			if(resp.equals("FUNDO")) {
+				resp = "FUNDO";
+				fim = 1;	
+			}else if(resp.equals("ESGOTO")) {
+				resp = "ESGOTO";
+				fim = 1;
+				}
+		}fim = 0;
+		return resp;
+		
+	}
+		
+
+	public static void esgoto (int a) {
+		Scanner scan = new Scanner(System.in);
+		int t = 1;
+		int balas = 10;
+		int vida = 50;
+		int fim = 0;
+		String resp = "";
+		System.out.println("voce decidiu entrar pelos esgotos.");
+		t = 1;
+		if (t == 1) {
+			System.out.println("Mesmo no ambiente sujo ao qual imaginava-se nao haver inimigos, você se depara com dois guardas guardando as estradas subterraneas. \n"
+					+ "existe uma caixa a direita e uma a esquerda, o guarda da esqueda olha na direção do segundo guarda \n"
+					+ "o outro guarda olha para a frente, existe uma  chance de chegar pelas costas de um dos dois\n"
+					+ ". Por qual caixa você deseja seguir?");
+			while(fim == 0) {
+				System.out.println("1-ESQUERDA\n2-DIREITA");
+				resp = scan.nextLine().toUpperCase();
+				if(resp.equals("ESQUERDA")) {
+					resp = "ESQUERDA";
+					fim = 1;	
+				}else if(resp.equals("DIREITA")) {
+					resp = "DIREITA";
+					fim = 1;
+					}
+			}fim = 0;
+			if (resp.equals("ESQUERDA")) {
+				System.out.println("Você se aproxima do alvo da esquerda, deseja abate-lo:");
+				while(fim == 0) {
+					System.out.println("1-FURTIVAMENTE\n2-ATIRAR");
+					resp = scan.nextLine().toUpperCase();
+					if(resp.equals("FURTIVAMENTE")) {
+						t = 1;
+						fim = 1;	
+					}else if(resp.equals("ATIRAR")) {
+						t = 2;
+						fim = 1;
+						}
+				}fim = 0;
+				if (t == 1) {
+					System.out.println("você conseguiu abate-lo furtivamente, você deseja chegar perto do segundo:\n"
+							+ "Aproximar-se furtivamente(1)\nAtirar nele de longe(2)");
+					if(t == 1) {
+						System.out.println("Voce consegue se aproximar do segundo guarda sem ser visto, deseja abate-lo");
+						while(fim == 0) {
+							System.out.println("1-FURTIVAMENTE\n2-ATIRAR");
+							resp = scan.nextLine().toUpperCase();
+							if(resp.equals("FURTIVAMENTE")) {
+								t = 1;
+								fim = 1;	
+							}else if(resp.equals("ATIRAR")) {
+								t = 2;
+								fim = 1;
+								}
+						}fim = 0;
+								if (t == 1) {
+									System.out.println("Voce consegue abater o alvo furitvamente");
+								}else
+									System.out.println("Voce consegue abater o alvo, mas perde uma bala");
+									atirar(1);			
+					}else
+						System.out.println("Voce consegue eliminar o segundo guarda com sua arma, mas perde uma bala");
+						atirar(1);
+				}
+						
+						
+				//caminho 2, usando a arma
+					
+			}else {
+				System.out.println("Você consegue abater o primeiro guarda, porem o segundo te nota devido ao barulho de sua arma,\n"
+						+ "antes que voce consiga fazer algo, ele consegue te acertar um tiro, voce deseja: \natirar nele de volta(1)\n"
+						+ "correr na sua direção(2)?");
+				atirar(1);
+				dano1(1);
+				while(fim == 0) {
+					System.out.println("1-ATIRAR\n2-CORRER");
+					resp = scan.nextLine().toUpperCase();
+					if(resp.equals("ATIRAR")) {
+						t = 1;
+						fim = 1;	
+					}else if(resp.equals("CORRER")) {
+						t = 2;
+						fim = 1;
+						}
+				}fim = 0;
+				if (t == 1) {
+					System.out.println("voce consegue eliminar o segundo guarda, mas perde uma bala");
+					atirar(1);
+				}else
+					System.out.println("enquanto voce corre na direção dele, voce toma outro tiro e perde vida\n "
+							+ "ao chegar perto, voce deseja: \nabate-lo com as maos(1)\n Abate-lo com um tiro(2)?");
+					dano1(2);
+					while(fim == 0) {
+						System.out.println("1-ABATER\n2-ATIRAR");
+						resp = scan.nextLine().toUpperCase();
+						if(resp.equals("ABATER")) {
+							t = 1;
+							fim = 1;	
+						}else if(resp.equals("ATIRAR")) {
+							t = 2;
+							fim = 1;
+							}
+					}fim = 0;
+					if (t == 1) {
+						System.out.println("voce conseguiu abater o primeiro inimigo");
+					}else {
+						System.out.println("Voce conseguiu abater o inimigo, porem gastou uma bala");
+						atirar(1);
+					}
+				
+			}
+		}else {
+			System.out.println("Voce consegue chegar no guarda sem ser visto\nabate-lo furtivamente (1)\n abalte-lo usando sua arma (2)?");
+			while(fim == 0) {
+				System.out.println("1-FURTIVAMENTE\n2-ATIRAR");
+				resp = scan.nextLine().toUpperCase();
+				if(resp.equals("FURTIVAMENTE")) {
+					t = 1;
+					fim = 1;	
+				}else if(resp.equals("ATIRAR")) {
+					t = 2;
+					fim = 1;
+					}
+			}fim = 0;
+			if (t == 1) {
+				System.out.println("Voce consegue abater o guarda, porem o segundo guarda te ve pois estava olhando em sua direção. \n"
+						+ "Antes que voce possa fazer algo, ele te acerta um tiro. Voce deseja: \natirar nele (1)\ncorrer em sua direção (2)?");
+				dano1(1);
+				t = scan.nextInt();
+				if (t == 1) {
+					System.out.println("Voce consegue abater o segundo, porem perde uma bala");
+					atirar(1);
+				}else {
+					System.out.println("Voce corre na direção do inimigo, porem ele te acerta um tiro no caminho. Ao chegar la"
+							+ ", voce deseja: \natirar (1)\nabate-lo com as mãos(2)?");
+					dano2(1);
+					while(fim == 0) {
+						System.out.println("1-ATIRAR\n2-ABATER");
+						resp = scan.nextLine().toUpperCase();
+						if(resp.equals("ATIRAR")) {
+							t = 1;
+							fim = 1;	
+						}else if(resp.equals("ABATER")) {
+							t = 2;
+							fim = 1;
+							}
+					}fim = 0;
+					if (t == 1) {
+						System.out.println("Voce consegue abater o segundo guarda, porem gasta munição");
+						atirar(1);
+					}else
+						System.out.println("Voce consegue abater o guarda com um soco");
+				}
+				// caminho usando a arma
+			}else {
+				System.out.println("Voce consegue abater o guarda, porem o segundo guarda consegue ver.\n"
+						+ "Antes que voce possa fazer algo, ele te acerta um tiro. Voce deseja: \natirar nele (1) \ncorrer em sua direção (2)?");
+				dano1(1);
+				t = scan.nextInt();
+				if (t == 1) {
+					System.out.println("voce consegue eliminar o segundo guarda, mas perde uma bala");
+					atirar(1);
+				}else
+					System.out.println("enquanto voce corre na direção dele, voce toma outro tiro e perde vida\n "
+							+ "ao chegar perto, voce deseja: \nabate-lo com as maos(1)\n abate-lo com um tiro(2)?");
+					dano1(1);
+					while(fim == 0) {
+						System.out.println("1-ABATER\n2-ATIRAR");
+						resp = scan.nextLine().toUpperCase();
+						if(resp.equals("ABATER")) {
+							t = 1;
+							fim = 1;	
+						}else if(resp.equals("ATIRAR")) {
+							t = 2;
+							fim = 1;
+							}
+					}fim = 0;
+					if (t == 1) {
+						System.out.println("voce conseguiu abater o primeiro inimigo");
+					}else
+						System.out.println("Voce conseguiu abater o inimigo, porem gastou uma bala");
+						atirar(1);
+							
+					}	
+				}//primeiro if/else
+			}
 	
 	public static void entrou(int a) {
 		Scanner scan = new Scanner(System.in);
@@ -347,14 +631,39 @@ public class PROJECT {
 		int avançou = 0;
 		int refil1 = 0;
 		int t = 0;
+		String resp = "";
+		int fim = 0;
 		while(avançou != 1) {
 			System.out.println("Você esta em uma sala com tres portas. para qual você deseja ir?\nPorta leste(1)\nPorta Oeste(2)\nPorta Norte(3)");
-			t = scan.nextInt();
+			while(fim == 0) {
+				System.out.println("1-LESTE\n2-OESTE\n3-NORTE");
+				resp = scan.nextLine().toUpperCase();
+				if(resp.equals("LESTE")) {
+					t = 1;
+					fim = 1;	
+				}else if(resp.equals("OESTE")) {
+					t = 2;
+					fim = 1;
+				}else if(resp.equals("NORTE")) {
+					t = 3;
+					fim = 1;
+				}
+			}fim = 0;
 			switch (t) {
 			case 1:
 				if (chave1 == 0) {	
 					System.out.println("Você entrou na porta Leste, Dentro da sala você acha uma chave, deseja pega-la?\nSim(1)\nNão(2)");
-					t = scan.nextInt();
+					while(fim == 0) {
+						System.out.println("1-SIM\n2-NAO");
+						resp = scan.nextLine().toUpperCase();
+						if(resp.equals("SIM")) {
+							t = 1;
+							fim = 1;	
+						}else if(resp.equals("NAO")) {
+							t = 2;
+							fim = 1;
+							}
+					}fim = 0;
 					if (t == 1) {
 						System.out.println("Você pegou a chave");
 						chave1 = 1;
@@ -369,7 +678,17 @@ public class PROJECT {
 				if (refil1 == 0) {
 				System.out.println("Você entrou na sala Oeste, dentro da sala você encontra um refil para recarregar\n"
 						+ "as balas da sua arma, deseja pegar?\nSim(1)\nNão(2)");
-				t = scan.nextInt();
+				while(fim == 0) {
+					System.out.println("1-SIM\n2-NAO");
+					resp = scan.nextLine().toUpperCase();
+					if(resp.equals("SIM")) {
+						t = 1;
+						fim = 1;	
+					}else if(resp.equals("NAO")) {
+						t = 2;
+						fim = 1;
+						}
+				}fim = 0;
 				if (t == 1) {
 					System.out.println("Você pegou o refil e recarregou sua arma");
 					balas = 10;
@@ -395,13 +714,46 @@ public class PROJECT {
 			}
 		}//while 1
 		
-	}//fim função entrou
+	}
+	
+	public static void salas(int a) {
+		int caminho = 1;
+		int fim = 0;
+		while (fim != 1) {
+			if(caminho == 1) {
+				caminho = caminho1(caminho);
+			}else if(caminho == 2) {
+				caminho = caminho2(caminho);
+			}else if(caminho == 3) {
+				caminho = caminho3(caminho);
+			}else if(caminho == 4) {
+				caminho = caminho4(caminho);
+			}else if(caminho == 5) {
+				caminho = caminho5(caminho);
+			}else if(caminho == 6) {
+				caminho = caminho6(caminho);
+			}
+		}
+	}
 	
 	public static int caminho1(int a) {
 		Scanner scan = new Scanner(System.in);
+		int t = 0;
+		int fim = 0;
+		String resp = "";
 		System.out.println("Você se encontra em um corredor, com uma porta ao norte e a continuação do corredor a leste, para onde deseja ir?"
 				+ "\nPorta ao norte(1)\nContinuar no corredor(2)");
-		int t = scan.nextInt();
+		while(fim == 0) {
+			System.out.println("1-NORTE\n2-CONTINUAR");
+			resp = scan.nextLine().toUpperCase();
+			if(resp.equals("NORTE")) {
+				t = 1;
+				fim = 1;	
+			}else if(resp.equals("CONTINUAR")) {
+				t = 2;
+				fim = 1;
+				}
+		}fim = 0;
 		int caminho = 0;
 		if (t == 1) {
 			caminho = 2;
@@ -410,24 +762,43 @@ public class PROJECT {
 			caminho = 3;
 			return caminho;
 		
-	}// fim função caminho1
-	
-	public static int caminho2(int a, int b) {
+	}
+	public static int caminho2(int a) {
 		Scanner scan = new Scanner(System.in);
 		int fim = 0;
 		int t = 1;
-		int chave = b;
 		int caminho = 0;
-			if (chave == 0){
+		String resp = "";
+			if (status[3] == 0){
 				System.out.println("Na sala você avista um painel, porem precisa de uma chave para liberar, você volta ao corredor\n");
 				caminho = 1;
 				return caminho;
 			}else
 				System.out.println("Apos desbloquear o painel com a chave, você pode verefica-lo:\nVerificar computador(1)\nVoltar para o corredor(2)");
-				t = scan.nextInt();
+			while(fim == 0) {
+				System.out.println("1-VERIFICAR\n2-VOLTAR");
+				resp = scan.nextLine().toUpperCase();
+				if(resp.equals("VERIFICAR")) {
+					t = 1;
+					fim = 1;	
+				}else if(resp.equals("VOLTAR")) {
+					t = 2;
+					fim = 1;
+					}
+			}fim = 0;
 					if (t == 1) {
 						System.out.println("O painel apresenta uma senha, voce pode:\nHackear computador(1)\nDesistir(2)");
-						t = scan.nextInt();
+						while(fim == 0) {
+							System.out.println("1-HACK\n2-DESISTIR");
+							resp = scan.nextLine().toUpperCase();
+							if(resp.equals("HACK")) {
+								t = 1;
+								fim = 1;	
+							}else if(resp.equals("DESISTIR")) {
+								t = 2;
+								fim = 1;
+								}
+						}fim = 0;
 							if (t == 1) {
 								System.out.println("Para hackear o painel você precisa resolver um puzzle.\n"
 										+ "Responda: raiz quadrada de 9");
@@ -439,7 +810,17 @@ public class PROJECT {
 								}
 								System.out.println("Ao conseguir, você escuta uma porta abrindo na sala atras de você\n"
 										+ "Você deseja entrar na porta ou retornar para o corredor?\nEntrar na porta(1)\nVoltar ao corredor(2)");
-									t = scan.nextInt();
+								while(fim == 0) {
+									System.out.println("1-ENTRAR\n2-VOLTAR");
+									resp = scan.nextLine().toUpperCase();
+									if(resp.equals("ENTRAR")) {
+										t = 1;
+										fim = 1;	
+									}else if(resp.equals("VOLTAR")) {
+										t = 2;
+										fim = 1;
+										}
+								}fim = 0;
 									if (t == 1) {
 										System.out.println("você entrou na porta!");
 										caminho = 7;
@@ -456,14 +837,26 @@ public class PROJECT {
 		}else
 			caminho = 1;
 			return caminho;
-		}//fim caminho 2
+		}
 	
 	public static int caminho3(int a) {
 		Scanner scan = new Scanner(System.in);
 		int t = 0;
 		int caminho = 0;
+		int fim = 0;
+		String resp = "";
 		System.out.println("Ao chegar no final do corredor, voce encontra uma porta a leste\nEntrar na porta ao leste(1)\nVoltar a oeste para o começo do corredor(2) ");
-		t = scan.nextInt();
+		while(fim == 0) {
+			System.out.println("1-ENTRAR\n2-VOLTAR");
+			resp = scan.nextLine().toUpperCase();
+			if(resp.equals("ENTRAR")) {
+				t = 1;
+				fim = 1;	
+			}else if(resp.equals("VOLTAR")) {
+				t = 2;
+				fim = 1;
+				}
+		}fim = 0;
 			if (t == 1) {
 				System.out.println("Você passa pela porta");
 				caminho = 4;
@@ -472,7 +865,7 @@ public class PROJECT {
 				System.out.println("Você volta para o começo do corredor");
 				caminho = 1;
 				return caminho;
-		}//fim caminho 4
+		}
 	
 	public static int caminho4(int a) {
 		Scanner scan = new Scanner(System.in);
@@ -481,21 +874,49 @@ public class PROJECT {
 		int t2 = 1;
 		int vida = 40;
 		int poção = 1;
+		int fim = 0;
+		String resp = "";
 		while(t2 != 0) {
 			System.out.println("norte(1)\nleste(2)\noeste(3)\nsul(4)");
-			t = scan.nextInt();
+			while(fim == 0) {
+				System.out.println("1-NORTE\n2-LESTE\n3-OESTE\n4-SUL");
+				resp = scan.nextLine().toUpperCase();
+				if(resp.equals("NORTE")) {
+					t = 1;
+					fim = 1;	
+				}else if(resp.equals("LESTE")) {
+					t = 2;
+					fim = 1;
+				}else if(resp.equals("OESTE")) {
+					t = 3;
+					fim = 1;
+				}else if(resp.equals("SUL")) {
+					t = 4;
+					fim = 1;
+				}
+			}fim = 0;
 			if(t == 1) {
-				System.out.println("a sala esta vazia, voce volta para a sala anterior");
+				System.out.println("a sala esta vazia, voce volta para a sala principal");
 			}else if(t == 2) {
 				System.out.println("Você encontra uma poção de cura, voce deseja tomar?\nSim(1)\nNão(2)");
-				t = scan.nextInt();
+				while(fim == 0) {
+					System.out.println("1-SIM\n2-NÃO");
+					resp = scan.nextLine().toUpperCase();
+					if(resp.equals("SIM")) {
+						t = 1;
+						fim = 1;	
+					}else if(resp.equals("NAO")) {
+						t = 2;
+						fim = 1;
+						}
+				}fim = 0;
 				if (t == 1) {
 					System.out.println("Sua vida foi regenerada, você volta para a sala anterior");
 					vida = 50;
 				}else
 					System.out.println("Você volta para a sala anterior");
 			}else if(t == 3) {
-				System.out.println("Você passa para outra sala");
+				System.out.println("Você passa para a proxima sala");
 				caminho = 5;
 				return caminho;
 			}else if(t == 4){
@@ -507,7 +928,7 @@ public class PROJECT {
 				
 		}
 		return caminho;
-	}//fim caminho 4
+	}
 	
 	public static int caminho5(int a) {
 		Scanner scan = new Scanner(System.in);
@@ -515,16 +936,42 @@ public class PROJECT {
 		int caminho = 0;
 		int t2 = 2;
 		int c = 1;
+		int fim = 0;
+		String resp = "";
 		while (t2 != 1) {
 			System.out.println("Você se encontra em uma sala com três portas, norte, sul e leste,e uma a Oeste para voltar de onde veio.\nPara qual você deseja ir?\n"
-					+ "Norte(1)\nSul(2)\nOeste(3)");
-			t = scan.nextInt();
+					+ "Leste(1)\nSul(2)\nOeste(3)");
+			while(fim == 0) {
+				System.out.println("1-LESTE\n2-SUL\n3-OESTE");
+				resp = scan.nextLine().toUpperCase();
+				if(resp.equals("LESTE")) {
+					t = 1;
+					fim = 1;	
+				}else if(resp.equals("SUL")) {
+					t = 2;
+					fim = 1;
+				}else if(resp.equals("OESTE")) {
+					t = 2;
+					fim = 1;
+				}
+			}fim = 0;
 			if (t == 1) {
 				System.out.println("voce volta para a sala anterior");
 				caminho = 4;
 			}else if (t == 2) {
 				if (c == 1) {
 				System.out.println("Você encontra uma chave, voce deseja pegar?\nSim(1)\nNão(2)");
+				while(fim == 0) {
+					System.out.println("1-SIM\n2-NÃO");
+					resp = scan.nextLine().toUpperCase();
+					if(resp.equals("SIM")) {
+						t = 1;
+						fim = 1;	
+					}else if(resp.equals("NAO")) {
+						t = 2;
+						fim = 1;
+						}
+				}fim = 0;
 					if (t == 1) {
 						System.out.println("Pegou a chave, você volta para a sala anterior");
 						c = 1;
@@ -543,12 +990,23 @@ public class PROJECT {
 		}
 		return caminho;
 	}
-	//fim caminho 5
-	
 	public static int caminho6(int a) {
 		Scanner scan = new Scanner(System.in);
+		int t = 0;
+		int fim = 0;
+		String resp = "";
 		System.out.println("avançar(1)\nRecuar(2)");
-		int t = scan.nextInt();
+		while(fim == 0) {
+			System.out.println("1-AVANÇAR\n2-RECUAR");
+			resp = scan.nextLine().toUpperCase();
+			if(resp.equals("AVANÇAR")) {
+				t = 1;
+				fim = 1;	
+			}else if(resp.equals("RECUAR")) {
+				t = 2;
+				fim = 1;
+				}
+		}fim = 0;
 		int caminho = 0;
 		if (t == 1) {
 			caminho = 8;
@@ -556,7 +1014,8 @@ public class PROJECT {
 			caminho = 5;}
 		return caminho;
 			
-	}//fim caminho 6
+	}
+	//fim caminho 6
 
   public static void Fase3Chefe(){
     String resp = Repeticao("Vamos atrás do maioral deste planeta imundo, Vamos para NORTE agora","NORTE");
@@ -709,5 +1168,53 @@ if (t == 1 ) {
         System.out.println("A saida desse lado está fechada, é possivel abri-la com ferramentas mas você não tem nenhuma, pode buscar outras alternativas");
       }
 }
-    
+ public static void Inicio(int a) {
+			Scanner scan = new Scanner(System.in);
+			String resp = "";
+			int fim = 0;
+			System.out.println("No ano de 2040, Em razao da evolução da medicina as pessoas pararam de morrer por envelhecimento,\n "
+					+ " o que resultou em uma drastica diminuição de novas crianças nascendo biologicamente, ate o ano de 2070,\n"
+					+ "	que a biologia humana evoluiu, e as pessoas não tinham mais a capacidade de ter filhos biologicamente.\n"
+					+ "	Um medico descobriu uma forma de criar bebes em laboratorio, essas novas crianças ja nasciam destinadas \n"
+					+ " a cumprir um papel pré designado para a sociedade\n");
+			System.out.println(" Em 2407, tivemos nosso primeiro contato com uma raça inteligente vinda de outro planeta, logo foram\n "
+					+ "compartilhados conhecimentos e formas como sociedade a sociedade funciona. Em uma vinda repentina, seres desse \n"
+					+ " planeta vieram nos visitar, dizendo ser para estudos. Ao  ver a quantidade de recursos disponiveis na terra, logo \n"
+					+ " iniciaram uma tentativa de tomada do planeta.\r \n"
+					+ "Apos 30 anos de uma guerra extremamente destrutiva, a humanidade estava em desvantagem, e a derrota estava iminente,\n"
+					+ "porêm, o mesmo medico que inventou a criançao de crianças por meio de laboratorio, fez uma descoberta que pode mudar\n"
+					+ " o rumo da guerra. Ele descobriu uma forma de dar poderes a essas crianças que eram criadas, logo a primeira leva de super\n"
+					+ "soldados foram criados e treinados para o combate.\n"
+					+ "É ai que você nasceu, na primeira leva de super soldados\n");
+			System.out.println("\n Qual o seu nome?");
+			nome = scan.next();
+			
+			String poder = "";
+			System.out.println("Muito bem "+ nome +", agora escolha a sua classe digitando o numero referente a cada uma delas:");
+			System.out.println("Classe 1 = Voador - Voe para passar por obstaculos e para te auxiliar na batalha\n"
+					+ "Classe 2 = Super força - Com a super força, você pode se livrar de obstaculos e usar na batalha\n"
+					+ "Classe 3 = Poder Psiquico - Possuia a capacidade de puxar objetos com o poder da mente, também pode ser usado contra adversarios\n");
+			
+			  while(fim == 0) {
+				System.out.println("1-VOADOR\n2-FORÇA\n-3PSI");
+				resp = scan.nextLine().toUpperCase();
+				if(resp.equals("VOADOR")) {
+					resp = "VOADOR";
+          Status[9] = 1;
+					fim = 1;	
+				}else if(resp.equals("FORÇA")) {
+					resp = "FORÇA";
+          Status[9] = 2;
+					fim = 1;
+				}else if(resp.equals("PSI")) {
+					resp = "PSI";
+          Status[9] = 3;
+					fim = 1;
+				}
+			}fim = 0;
+			
+				System.out.println("classe escolhida: "+ resp);
+				
+				
+			   
 }
