@@ -1512,6 +1512,194 @@ public static void Missao2(int a) {
 		System.out.println("Você encontrou a nave, porem existem inimigos guardando elas e você deve elimina-los.");
 		
 		return s;
+
 	}
-			   
+		import java.util.Scanner;
+ public class WAVE{
+    public void main(String[] args){
+    Scanner scan = new Scanner(System.in);
+		int t = 1;
+		int balas = 10;
+		int vida = 50;
+		int fim = 0;
+		String resp = "";
+		System.out.println(" Chegando nas coordenadas mandada pela base observa de longe que é uma emboscada,o inimigo te cerca e começa á atirar sem cessar .");
+		t = 1;
+		if (t == 1) {
+			System.out.println("o inimigo te ataca, com vários tiros . \n"
+					+ "tu corre e se esconde \n"
+					+ "desvia e atira no inimigo \n"
+					+ "qual será sua reação?");
+			while(fim == 0) {
+				System.out.println("1-CORRER \n2-ATACAR ");
+				resp = scan.nextLine().toUpperCase();
+				if(resp.equals("CORRER")) {
+					resp = "CORRER";
+					fim = 1;	
+				}else if(resp.equals("ATACAR")) {
+					resp = "ATACAR";
+					fim = 1;
+					}
+			}fim = 0;
+			if (resp.equals("ATACAR")) {
+				System.out.println("Você pega um destroço e se abriga em seguida atira na direção do inimigo :");
+				while(fim == 0) {
+					System.out.println("1-CONTINUAR ATACANDO \n2-AGUARDAR REAÇÃO DO INIMIGO");
+					resp = scan.nextLine().toUpperCase();
+					if(resp.equals("CONTINUAR ATACANDO")) {
+						t = 1;
+						fim = 1;	
+					}else if(resp.equals("REAÇÃO DO INIMIGO")) {
+						t = 2;
+						fim = 1;
+						}
+				}fim = 0;
+				if (t == 1) {
+					System.out.println("Você conseguiu afastar o inimigo, deseja avançar e ganhar território ?:\n continuar avançando e atirando(1) / aguardar movimento inimigo(2)");
+					if(t == 1) {
+						System.out.println("O inimigo está sem saída, avançar?");
+						while(fim == 0) {
+							System.out.println("1-\n2-ATIRAR");
+							resp = scan.nextLine().toUpperCase();
+							if(resp.equals("AGUARDAR INIMIGO")) {
+								t = 1;
+								fim = 1;	
+							}else if(resp.equals("ATIRAR")) {
+								t = 2;
+								fim = 1;
+								}
+						}fim = 0;
+								if (t == 1) {
+									System.out.println("Sua munição está acabando, está vindo reforço");
+								}else
+									System.out.println("acabou sua munição mas elimnou o inimigo!");
+									atirar(1);			
+					}else
+						System.out.println("Voçê conseguiu eliminar todos os inimigo, continue avançando");
+						atirar(1);
+				}
+						
+					
+				
+					
+			}else {
+				System.out.println("Outro pilotão de inimigos está avançando, aguardar reforço? ,\n"
+						+ "antes que voce consiga fazer algo, entre em contato com a base, voce deseja: falar enviar sua localização?(1)\n"
+						+ " aguardar em silêncio(2)?");
+				atirar(1);
+				dano1(1);
+				while(fim == 0) {
+					System.out.println("1-INFORMAR\n2-CORRER");
+					resp = scan.nextLine().toUpperCase();
+					if(resp.equals("INFORMAR")) {
+						t = 1;
+						fim = 1;	
+					}else if(resp.equals("CORRER")) {
+						t = 2;
+						fim = 1;
+						}
+				}fim = 0;
+				if (t == 1) {
+					System.out.println("Voçê enviou sua localização o grupo de apoio está chegando, há poucas balas no pente");
+					atirar(1);
+				}else
+					System.out.println("estão jogando bombas de fumaças\n "
+							+ "um inimigo chegando muito próximo, voce deseja: \ gastar as últimas balas do pente?(1)\n golpear com as mãos(2)?");
+					dano1(2);
+					while(fim == 0) {
+						System.out.println("1-ABATER\n2-ATIRAR");
+						resp = scan.nextLine().toUpperCase();
+						if(resp.equals("ABATER")) {
+							t = 1;
+							fim = 1;	
+						}else if(resp.equals("ATIRAR")) {
+							t = 2;
+							fim = 1;
+							}
+					}fim = 0;
+					if (t == 1) {
+						System.out.println("voce conseguiu abater o primeiro inimigo");
+					}else {
+						System.out.println("Voce conseguiu abater o inimigo, porém gastou uma bala");
+						atirar(1);
+					}
+				
+			}
+		}else {
+			System.out.println(" inimigo morto \ aguarde o apoio quieto(1)\n sair e procurar outro lugar para ficar(2)?");
+			while(fim == 0) {
+				System.out.println("1-AGUARDAR \n2-ATIRAR");
+				resp = scan.nextLine().toUpperCase();
+				if(resp.equals("AGUARDAR")) {
+					t = 1;
+					fim = 1;	
+				}else if(resp.equals("ATIRAR")) {
+					t = 2;
+					fim = 1;
+					}
+			}fim = 0;
+			if (t == 1) {
+				System.out.println("Te acharam e atirarm na sua direção  \n"
+						+ "Antes que voce possa fazer algo, ele te acerta um tiro. Voce deseja: \ se esconder (1)\ correr em direção a sua nave(2)?");
+				dano1(1);
+				t = scan.nextInt();
+				if (t == 1) {
+					System.out.println("Voçê achou um pente de balas no colete, desejar atirar para afastar inimigos");
+					atirar(1);
+				}else {
+					System.out.println("Voçê deu de frente com um inimigo e atirou, ele está agonizando na sua frente"
+							+ ", voce deseja: \ deixar ele agonizando? (1)\ abate-lo com as mãos(2)?");
+					dano2(1);
+					while(fim == 0) {
+						System.out.println("1-DEIXAR \n2-MATAR");
+						resp = scan.nextLine().toUpperCase();
+						if(resp.equals("DEIXAR")) {
+							t = 1;
+							fim = 1;	
+						}else if(resp.equals("MATAR")) {
+							t = 2;
+							fim = 1;
+							}
+					}fim = 0;
+					if (t == 1) {
+						System.out.println("O reforço chegou, está um combate intenso, quer atirar?");
+						atirar(1);
+					}else
+						System.out.println("Voçê segue atirando nos inimigos");
+				}
+				
+			}else {
+				System.out.println("Os inimigos estão recuando, seus aliados começam a ganhar a batalha .\n"
+						+ " estão vindo os útltimos inimigos da esquerda, estão sem saída . Voce deseja: \n atirar nele (1) \nrecuar com os aliados (2)?");
+				dano1(1);
+				t = scan.nextInt();
+				if (t == 1) {
+					System.out.println("Voçê matou mais um inimigo, perdeu mais duas balas");
+					atirar(1);" só restam poucas balas no pente "
+				}else
+					System.out.println("enquanto você se esconde, voce toma outro tiro e perde vida\n "
+							+ "seus inimigos chegaran perto, voce deseja: \nabate-lo com as maos(1)\n abate-lo com um tiro(2)?");
+					dano1(1);
+					while(fim == 0) {
+						System.out.println("1-MATAR\n2-ATIRAR");
+						resp = scan.nextLine().toUpperCase();
+						if(resp.equals("MATAR")) {
+							t = 1;
+							fim = 1;	
+						}else if(resp.equals("ATIRAR")) {
+							t = 2;
+							fim = 1;
+							}
+					}fim = 0;
+					if (t == 1) {
+						System.out.println("você venceu a batalha! ");
+					}else
+						System.out.println("volte para a base ");
+				
+							
+					}	
+				} 
+			}
+}
+	   
 }
