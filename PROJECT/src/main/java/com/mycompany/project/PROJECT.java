@@ -1094,7 +1094,6 @@ public static void Fase3Final(){
   
 
   public static void fase3guardacostas (int a){
-  Scanner scan = new Scanner (System.in);
   System.out.println(" General - Soldado, seu aliados estão a caminho de derrotar o inimigo e salvar o cientista\n"
     + ", Sua missão principal é destruir a nave mãe dos alienigenas para acabar com qualquer chance de uma nova invasão a nossa terra ! Sabotando  a nave chame a atenção dos guardas para que a equipe 1 consiga salvar o cientista. \n"
     + " Esse caça que você está com o Capitão Jorge vai passar pela rota 70 metros acima da nave inimiga para não ser identificado, você deve saltar do avião e aterrisar furtivamente na nave inimiga, boa sorte na sua missão, o futuro da nossa raça está em suas mãos.\n"      
@@ -1167,6 +1166,7 @@ if (t == 1 ) {
         }else 
         System.out.println("A saida desse lado está fechada, é possivel abri-la com ferramentas mas você não tem nenhuma, pode buscar outras alternativas");
       }
+  }
 }
  public static void Inicio(int a) {
 			Scanner scan = new Scanner(System.in);
@@ -1195,7 +1195,7 @@ if (t == 1 ) {
 					+ "Classe 2 = Super força - Com a super força, você pode se livrar de obstaculos e usar na batalha\n"
 					+ "Classe 3 = Poder Psiquico - Possuia a capacidade de puxar objetos com o poder da mente, também pode ser usado contra adversarios\n");
 			
-			  while(fim == 0) {
+			while(fim == 0) {
 				System.out.println("1-VOADOR\n2-FORÇA\n-3PSI");
 				resp = scan.nextLine().toUpperCase();
 				if(resp.equals("VOADOR")) {
@@ -1214,7 +1214,304 @@ if (t == 1 ) {
 			}fim = 0;
 			
 				System.out.println("classe escolhida: "+ resp);
+    		
+  }
+
+//missão dois, começo.
+public static void Missao2(int a) {
+	Scanner scan = new Scanner(System.in);
+	int sala = 1;
+	System.out.println("GENERAL-Equanto estamos nos encaminhando para o planeta, nossa nave acaba sendo interceptada\n"
+			+ "pelos inimigos. Eles ja conseguiram entrar, nos juntamos a equipe para decidir qual será\n"
+			+ "o plano para seguirmos a missao. Eles estão em maior numero, entao devemos seguir até\n"
+			+ "a nave reserva para seguirmos viagem. Para isso devemos alem de chegar até la, implantar uma\n"
+			+ "bomba no gerador principal, para abater os inimigos e ser possivel seguir viagem com a outra nave.Fale com Aya para ela\n"
+			+ "te indicar quais materiais você deve encontrar.");
+	System.out.println("Aya- Os materiais que você deve encontrar são o EXPLOSIVO e o DETONADOR, você tambem deve encontrar um mapa da nave para\n"
+			+ "facilitar nosso caminho.Siga para a sala da frente e procure pela area, após achar os materiais siga para a porta ao norte e\n"
+			+ " iniciaremos a missão");
+	while (sala != 4) {
+		if(sala == 1) {
+			sala = sala1(sala);
+		}else if(sala == 2) {
+			sala = sala2(sala);
+		}else if(sala == 3) {
+			sala = sala3(sala);
+		}
+	}	
+		System.out.println("GENERAL- Você conseguiu achar os materiais para a construção da bomba, porem ainda devemos intalar ela e chegar a nave\n"
+				+ "te dou a liberdade de escolher qual será a sua missão, achar a nave ou explodir a nave\n"
+				+ "1-NAVE\n2-EXPLODIR");
+		String missao = scan.nextLine();
+		if (missao.equals("nave")) {
+			System.out.println("GENERAL- Você decidiu procurar pela nave, boa sorte em sua busca por ela, \n"
+					+ "cuidado com possiveis obstaculos pelo caminho");
+			int s = 1;
+			labirinto(1);
+		}else {
+			
+		}
+	}
+	public static int sala1(int a) {
+		Scanner scan = new Scanner(System.in);
+		int sala = 0;
+		System.out.println("Você está em uma sala, existem tres portas, uma ao norte, você so deve avançar por essa após achar os materiais,\n"
+				+ " uma a leste e uma a oeste, para qual voce deve seguir?");
+		String caminho = Repeticao("1-NORTE\n2-LESTE\n3-OESTE", ("NORTE LESTE OESTE"));
+		if(caminho.equals("NORTE")) {
+			if((itens[0] == 1)&&(itens[1] == 1)) {
+				System.out.println("Você conseguiu os materiais e avança");
+				sala = 4;
+				return sala;
+			}else {
+				System.out.println("Você não encontrou os itens da missão, continue procurando");
+				sala = 1;
+				return sala;
+			}
+		}else if(caminho.equals("LESTE")) {
+			sala = 3;
+			return sala;
+		}else if(caminho.equals("OESTE")) {
+			sala = 2;
+			return sala;
+		}
+			
+		return sala;
+	}
+	public static int sala2(int a) {
+		Scanner scan = new Scanner(System.in);
+		int fim = 0;
+		int sala = 1;
+		int map = 0;
+		int explosivo = 0;
+		String caminho = "";
+		while(fim != 1) {	
+			System.out.println("Você está na sala OESTE, nessa sala existem 4 portas, para qual deseja seguir?\n1-NORTE\n2-OESTE\n3-SUL\n4LESTE(voltar a sala anterior)");
+			caminho = scan.nextLine().toLowerCase();
+			if(caminho.equals("norte")) {
+				System.out.println("Você entrou para a porta norte, porem a sala esta vazia, você volta para a sala anterior");
+			
+			
+			}else if(caminho.equals("sul")) {
+				if(explosivo == 0) {
+					System.out.println("Você entrou na porta sul, dentro dela se encontra o EXPLOSIVO, você deseja pega-lo?\n1- SIM\n2- NÃO");
+					String item = scan.nextLine().toLowerCase();
+					if(item.equals("sim")) {
+						System.out.println("Você pegou o explosivo. Você volta para a sala anterior");
+						itens[0] = 1;
+					}else
+					System.out.println("Não pegou, você volta para a sala anterior");
+				}else {
+					System.out.println("A sala está vazia, você volta para a sala anterior");
+				}
+			
+			}else if(caminho.equals("oeste")){
+				if(map == 0) {	
+					System.out.println("Você entra na sala, dentro dela voce encontra um mapa da nave, deseja pela-lo?\n1- SIM\n2- NÃO");
+					String mapa = scan.nextLine();
+					if(mapa.equals("sim")) {
+						System.out.println("Você pegou o mapa. Você volta para a sala anterior");
+						int mapa1 = 1;
+					}else
+						System.out.println("Não pegou, você volta para a sala anterior");
+				}else
+					System.out.println("A sala está vazia, você volta para a sala anterior");
+			
+			}else if(caminho.equals("leste")){
+				System.out.println("Você voltou para a sala principal a LESTE");
+				fim = 1;
+			}else
+				System.out.println("Resposta invalida");
+		}
+		return sala;
+	}
+	public static int sala3(int a) {
+		Scanner scan = new Scanner(System.in);
+		int fim = 0;
+		int sala = 1;
+		int detonador = 0;
+		String caminho = "";
+		while(fim != 1) {	
+			System.out.println("Você está na sala LESTE, nessa sala existem 3 portas, para qual deseja seguir?\n1-NORTE\n2-OESTE(Voltar a sala principal)\n3-SUL)");
+			caminho = scan.nextLine().toLowerCase();
+			if(caminho.equals("norte")) {
+				System.out.println("Você entrou para a porta norte, porem a sala esta vazia, você volta para a sala anterior");
 				
-				
+			}else if(caminho.equals("sul")) {
+				if(detonador == 0) {
+					System.out.println("Você entrou na porta sul, dentro dela se encontra o DETONADOR, você deseja pega-lo?\n1- SIM\n2- NÃO");
+					String item = scan.nextLine().toLowerCase();
+					if(item.equals("sim")) {
+						System.out.println("Você pegou o detonador. Você volta para a sala anterior");
+						itens[1] = 1;
+					}else
+						System.out.println("Não pegou, você volta para a sala anterior");
+				}else
+					System.out.println("A sala está vazia, você volta para a sala anterior");
+			
+			}else if(caminho.equals("oeste")){
+				System.out.println("Você voltou para a sala principal a OESTE");
+				fim = 1;
+			}else
+				System.out.println("Valor invalido");
+		}
+		return sala;
+	}
+	
+
+	
+	public static void labirinto(int a) {
+		int sala = 1;
+		while (sala != 11) {
+			if(sala == 1) {
+				sala = s1(sala);
+			}else if(sala == 2) {
+				sala = s2(sala);
+			}else if(sala == 3) {
+				sala = s3(sala);
+			}else if(sala == 4) {
+				sala = s4(sala);
+			}else if(sala == 5) {
+				sala = s5(sala);
+			}else if(sala == 6) {
+				sala = s6(sala);
+			}else if(sala == 7) {
+				sala = s7(sala);
+			}else if(sala == 8) {
+				sala = s8(sala);
+			}else if(sala == 10) {
+				sala = s10(sala);
+			}
+		}	
+		
+	}
+	
+	//labirinto!!
+	public static int s1(int a) {
+		Scanner scan = new Scanner(System.in);
+		int s = 1;
+		int fim = 0;
+		String resp = "";
+		System.out.println("Você está em uma sala, existem duas portas, uma a leste e uma a oeste, para qual voce deve seguir?n1- LESTE\n 2- OESTE");
+		String sala = scan.nextLine().toLowerCase();
+		resp = Repeticao("1-LESTE\n-2OESTE","LESTE OESTE");
+		if(resp.equals("OESTE")) {
+			System.out.println("Você entrou na sala OESTE");
+			s = 2;
+		}else if(resp.equals("OESTE")){
+			System.out.println("Você entrou na sala LESTE");
+			s = 4;
+		}
+		return s;
+	}
+	public static int s2(int a) {
+		Scanner scan = new Scanner(System.in);
+		int s = 2;
+		int fim = 0;
+		String resp = "";
+		System.out.println("Você está em uma sala, existem duas portas, uma a leste para voltar a sala principal e uma a sul, para qual voce deve seguir?n1- LESTE\n 2- SUL");
+		resp = Repeticao("1-LESTE\n2-SUL", "LESTE SUL");
+		if(resp.equals("LESTE")) {
+			s = 3;
+		}else if(resp.equals("SUL")){
+			s = 1;
+		}
+		
+		return s;
+	}
+	public static int s3(int a) {
+		Scanner scan = new Scanner(System.in);
+		int s = 2;
+		int fim = 0;
+		System.out.println("Você está em uma sala sem saida, você volta para a sala anterior");
+		
+		return s;
+	}
+	public static int s4(int a) {
+		Scanner scan = new Scanner(System.in);
+		int s = 2;
+		int fim = 0;
+		String resp = "";
+		System.out.println("Você está em uma sala, existem duas portas, uma a leste e uma a oeste, \n"
+				+ "e uma ao norte para voltar para a sala principal. Para qual voce deve seguir?n1-LESTE\n2-OESTE\n3-NORTE");
+		resp = Repeticao("1-LESTE\n2-OESTE\n3-NORTE", "LESTE OESTE NORTE");
+		if(resp.equals("LESTE")) {
+			s = 5;
+		}else if(resp.equals("OESTE")){
+			s = 8;
+		}else if(resp.equals("NORTE")) {
+			s = 1;
+		}
+		
+		return s;
+	}
+	public static int s5(int a) {
+		Scanner scan = new Scanner(System.in);
+		int s = 2;
+		int fim = 0;
+		String resp = "";
+		System.out.println("Você está em uma sala, existem duas portas, uma a sul e uma a norte, \n"
+				+ "e uma a oeste para voltar para a sala anterior. Para qual voce deve seguir?n1-SUL\n2-NORTE\n3-OESTE");
+		resp = Repeticao("1-SUL\n2-NORTE\n3-EOSTE", "SUL OESTE NORTE");
+		if(resp.equals("SUL")) {
+			s = 7;
+		}else if(resp.equals("OESTE")){
+			s = 4;
+		}else if(resp.equals("NORTE")) {
+			s = 6;
+		}
+		
+		return s;
+	}
+	public static int s7(int a) {
+		Scanner scan = new Scanner(System.in);
+		int s = 5;
+		int fim = 0;
+		System.out.println("Você está em uma sala sem saida, você volta para a sala anterior");
+		
+		return s;
+	}
+	public static int s6(int a) {
+		Scanner scan = new Scanner(System.in);
+		int s = 5;
+		int fim = 0;
+		System.out.println("Você está em uma sala sem saida, você volta para a sala anterior");
+		
+		return s;
+	}
+
+	public static int s8(int a) {
+		Scanner scan = new Scanner(System.in);
+		int s = 2;
+		int fim = 0;
+		String resp = "";
+		System.out.println("Você está em uma sala, existem duas portas, uma a sul e uma a leste, \n"
+				+ "e uma a norte para voltar para a sala anterior. Para qual voce deve seguir?n1-SUL\n2-NORTE\n3-OESTE");
+		resp = Repeticao("1-SUL\n2-NORTE\n3-LESTE", "SUL LESTE NORTE");
+		if(resp.equals("SUL")) {
+			s = 10;
+		}else if(resp.equals("LESTE")){
+			s = 9;
+		}else if(resp.equals("NORTE")) {
+			s = 4;
+		}
+		return s;
+	}
+	public static int s9(int a) {
+		Scanner scan = new Scanner(System.in);
+		int s = 8;
+		int fim = 0;
+		System.out.println("Você está em uma sala sem saida, você volta para a sala anterior");
+		
+		return s;
+	}
+	public static int s10(int a) {
+		Scanner scan = new Scanner(System.in);
+		int s = 11;
+		int fim = 0;
+		System.out.println("Você encontrou a nave, porem existem inimigos guardando elas e você deve elimina-los.");
+		
+		return s;
+	}
 			   
 }
