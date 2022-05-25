@@ -1126,6 +1126,7 @@ public static void Fase3Final(){
   
 
   public static void fase3guardacostas (int a){
+      Scanner scan = new Scanner (System.in);
   System.out.println(" General - Soldado, seu aliados estão a caminho de derrotar o inimigo e salvar o cientista\n"
     + ", Sua missão principal é destruir a nave mãe dos alienigenas para acabar com qualquer chance de uma nova invasão a nossa terra ! Sabotando  a nave chame a atenção dos guardas para que a equipe 1 consiga salvar o cientista. \n"
     + " Esse caça que você está com o Capitão Jorge vai passar pela rota 70 metros acima da nave inimiga para não ser identificado, você deve saltar do avião e aterrisar furtivamente na nave inimiga, boa sorte na sua missão, o futuro da nossa raça está em suas mãos.\n"      
@@ -1144,62 +1145,64 @@ public static void Fase3Final(){
     +" Buscar uma entrada escondida (1)\n Entrar pela porta principal da nave (2)");
     int t = scan.nextInt(); 
     
-if (t == 1 ) {
-     System.out.println("Você encontrou uma entrada de ar na parte superior da nave, para chegar até lá será necessário encontrar algo para escalar/n "
-      + "Você encontrou uma lixeira, pode empura-la e subir para conseguir acessar a saída de ar/n  "
-       + " Empurrar lixeira (1)/n Buscar outra alternativa(2 ) ");
-      t = scan.nextInt(); 
-
-  
-      if (t == 1){ 
-        System.out.println(" Você conseguiu acessar a saída de ar "); 
-       
-        }else {
-        System.out.println(" Personagem - Droga, não tenho muitas opções. "); 
-        }
-      System.out.println(" Os dutos de ar vão por duas direções, você deseja seguir pela Direita(1) ou Esquerda(2)");
-      t = scan.nextInt(); 
-      
-      if (t == 1 ){
-        System.out.println("Saída encontrada. (1) para sair do duto e pular na sala, (2) para voltar ");
-        t = scan.nextInt(); 
-       
-        if (t == 1 ){
-          System.out.println("Você está em uma sala desconhecida. pode tentar sair (1) ou buscar por recursos (2)"); 
-          t = scan.nextInt(); 
-         
-          if (t == 2){ 
-            System.out.println(" Você encontrou um kit de ferramentas e um teaser (com ele você pode abater guardas silenciosamente)/n"
-           // funcão olhar  
-        + "Com o kit de ferramentas você poderá abrir a porta segunda sáida do duto de ar. Deseja retornar para o duto ? Sim (1) Não (2) " ); 
-            t = scan.nextInt(); 
-           
-            if (t == 1){ 
-              System.out.println("Você usou o kit de ferramentas para abrir o a saida e encontrou a sala de controle da nave, plante a bomba e aguarde contato dos aliados para iniciar o cronometro/n "
-        + "Personagem 2 - Personagem 1, encontramos o cientista e estamos saindo da nave, estamos com o Personagem 3 que acabou de matar o chefe final. Plante a bomba e nos encontre no console de naves, vamos escapar com uma sub-nave.");
-            System.out.println("Digite 1 para plantar a bomba"); 
-              t = scan.nextInt(); 
-            
-              if ( t == 1 ){
-              System.out.println("A bomba foi plantada, vá para o ponto de encontro o mais rápido possivel para evadir da nave inimiga. ");
-            
-                }else 
-              System.out.println("Você precisa plantar a bomba agora."); 
-             
-              }else 
-              System.out.println("Você pode procurar por mais itens mas deve seguir pelo duto para continuar sua missão ");
-           
-            }else 
-            System.out.println("A sala está trancada, aparentemente existe uma barricada do outro lado ");
-         
-          }else
-          System.out.println("Você está voltando para a entrada principal. ");
-       
-        }else 
-        System.out.println("A saida desse lado está fechada, é possivel abri-la com ferramentas mas você não tem nenhuma, pode buscar outras alternativas");
+  while ( t == 2);
+    do {
+      System.out.println("Você foi encontrado pelos inimigos e raptado. Voltará para o início da missão ");
       }
-  }
-}
+    
+  if (t == 1 ){   System.out.println("Você encontrou uma entrada de ar na parte superior da nave, para chegar até lá será necessário encontrar algo para escalar/n "
+      + "Você encontrou uma lixeira, pode empura-la e subir para conseguir acessar a saída de ar/n");
+                                     
+      }
+     System.out.println("Você encontrou uma lixeira, pode empura-la e subir para conseguir acessar a saída de ar/n "
+ 
+    + " Empurrar lixeira (1)/n Buscar outra alternativa(2 ) "); 
+    t = scan.nextInt(); 
+
+    while (t == 2);
+    do{
+      System.out.println(" Personagem - Caramba olhei por todos os lados e acredito que não exista outra alternativa");
+       
+    }
+      
+      if (t == 1); {
+      System.out.println("Você conseguiu acessar a saída de ar");
+      }
+    System.out.println(" Os dutos de ar vão por duas direções, você deseja seguir pela Direita(1) ou Esquerda(2)");
+    t = scan.nextInt(); 
+    while ( t == 2); 
+    do {
+      System.out.println("A saida desse lado está fechada, é possivel abri-la com ferramentas mas você não tem nenhuma, pode buscar outras alternativas"); 
+    }
+      if (t == 1 ){
+      System.out.println("Saída encontrada, você está em uma sala desconhecida. pode voltar para o duto de ar (2) ou buscar por recursos(1)");
+      t = scan.nextInt(); 
+      while (t == 2 ); 
+      do {
+        System.out.println("Você voltou para o duto de ar mas precisa de recursos para conseguir abrir a outra saída, procure opções na sala anterior."); 
+      }
+        if (t == 1 ){
+        System.out.println("Você encontrou a chave da para a saída trancada. Pode buscar mais recursos na sala (1) ou ir para a sala de controle para plantar a bomba(2)"); }
+        t = scan.nextInt(); 
+        while (t == 1);
+          do {
+            System.out.println("Não existem mais itens disponiveis nessa sala. ");
+          }
+            if (t == 2 ){
+            System.out.println("Você está na sala de controle da nave inimiga. Aguarde o posicionamento dos aliados para plantar a bomba e fugir da nave"); 
+            }
+         System.out.println("Radio: Personagem 2 - Personagem 1, encontramos o cientista e estamos saindo da nave, estamos com o Personagem 3 que acabou de matar o chefe final. Plante a bomba e nos encontre no console de naves, vamos escapar com uma sub-nave."
+          + "Digite (1) para plantar a bomba " ); 
+             t = scan.nextInt();
+      
+           if ( t == 1 ){
+              System.out.println("A bomba foi plantada, vá para o ponto de encontro o mais rápido possivel para evadir da nave inimiga. ");
+             
+      }
+
+
+    
+
  public static void Inicio(int a) {
 			Scanner scan = new Scanner(System.in);
 			String resp = "";
