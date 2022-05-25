@@ -16,7 +16,7 @@ public class PROJECT {
     public static String Nome;
     public static int[] Nivel;
   
-    Scanner scan = new Scanner(System.in);
+    public static Scanner scan = new Scanner(System.in);
     
     public static void main(String[] args) {
       Status[0] = 50;//vida
@@ -157,7 +157,7 @@ public class PROJECT {
       
       System.out.println("Entramos no stand de tiros.");
       
-      String lcPegar = ("digite PEGAR RIFLE para pegar sua arma inicial.","PEGAR RIFLE");
+      String lcPegar = Repeticao("digite PEGAR RIFLE para pegar sua arma inicial.","PEGAR RIFLE");
       
       String lcEscolha = Repeticao("Temos alguns alvos a frente, você pode MIRAR para ter melhor precisão, ou ATIRAR aleatóriamente.\n"                               +"A escolha é sua agora!","MIRAR,ATIRAR");
       
@@ -254,8 +254,7 @@ public class PROJECT {
     }
   }
   }
-	public static void fundo (int a) {
-		Scanner scan = new Scanner(System.in);
+	public static void Fundo() {
 		int t = 1;
 		int balas = 10;
 		int vida = 50;
@@ -269,8 +268,7 @@ public class PROJECT {
 					+ "o outro guarda olha para a frente, existe uma  chance de chegar pelas costas de um dos dois\n"
 					+ ". Por qual caixa você deseja seguir?");
 			while(fim == 0) {
-				System.out.println("1-ESQUERDA\n2-DIREITA");
-				resp = scan.nextLine().toUpperCase();
+				resp =Repeticao("1-ESQUERDA\n2-DIREITA","ESQUERDA,DIREITA");
 				if(resp.equals("ESQUERDA")) {
 					resp = "ESQUERDA";
 					fim = 1;	
@@ -380,15 +378,15 @@ public class PROJECT {
 			if (t == 1) {
 				System.out.println("Voce consegue abater o guarda, porem o segundo guarda te ve pois estava olhando em sua direção. \n"
 						+ "Antes que voce possa fazer algo, ele te acerta um tiro. Voce deseja: \natirar nele (1)\ncorrer em sua direção (2)?");
-				dano1(1);
+				dano1();
 				t = scan.nextInt();
 				if (t == 1) {
 					System.out.println("Voce consegue abater o segundo, porem perde uma bala");
-					atirar(1);
+					atirar();
 				}else {
 					System.out.println("Voce corre na direção do inimigo, porem ele te acerta um tiro no caminho. Ao chegar la"
 							+ ", voce deseja: \natirar (1)\nabate-lo com as mãos(2)?");
-					dano2(1);
+					dano2();
 					while(fim == 0) {
 						System.out.println("1-ATIRAR\n2-ABATER");
 						resp = scan.nextLine().toUpperCase();
@@ -402,7 +400,7 @@ public class PROJECT {
 					}fim = 0;
 					if (t == 1) {
 						System.out.println("Voce consegue abater o segundo guarda, porem gasta munição");
-						atirar(1);
+						atirar();
 					}else
 						System.out.println("Voce consegue abater o guarda com um soco");
 				}
@@ -410,15 +408,15 @@ public class PROJECT {
 			}else {
 				System.out.println("Voce consegue abater o guarda, porem o segundo guarda consegue ver.\n"
 						+ "Antes que voce possa fazer algo, ele te acerta um tiro. Voce deseja: \natirar nele (1) \ncorrer em sua direção (2)?");
-				dano1(1);
+				dano1();
 				t = scan.nextInt();
 				if (t == 1) {
 					System.out.println("voce consegue eliminar o segundo guarda, mas perde uma bala");
-					atirar(1);
-				}else
+					atirar();
+				}else{
 					System.out.println("enquanto voce corre na direção dele, voce toma outro tiro e perde vida\n "
 							+ "ao chegar perto, voce deseja: \nabate-lo com as maos(1)\n abate-lo com um tiro(2)?");
-					dano1(1);
+					dano1();
 					while(fim == 0) {
 						System.out.println("1-ABATER\n2-ATIRAR");
 						resp = scan.nextLine().toUpperCase();
@@ -432,16 +430,16 @@ public class PROJECT {
 					}fim = 0;
 					if (t == 1) {
 						System.out.println("voce conseguiu abater o primeiro inimigo");
-					}else
-						System.out.println("Voce conseguiu abater o inimigo, porem gastou uma bala");
-						atirar(1);
-							
+					}else{
+            System.out.println("Voce conseguiu abater o inimigo, porem gastou uma bala");
+						atirar();
+          }	
 					}	
+        }
 				}//primeiro if/else
 			}
 		
 	public static String FASE3(int a) {
-		Scanner scan = new Scanner(System.in);
 		String resp = "";
     Status[8] = 3;
 		int fim = 0;
@@ -456,6 +454,7 @@ public class PROJECT {
 			resp = scan.nextLine().toUpperCase();
 			if(resp.equals("FUNDO")) {
 				resp = "FUNDO";
+        Fundo();
 				fim = 1;	
 			}else if(resp.equals("ESGOTO")) {
 				resp = "ESGOTO";
@@ -468,7 +467,6 @@ public class PROJECT {
 		
 
 	public static void esgoto (int a) {
-		Scanner scan = new Scanner(System.in);
 		int t = 1;
 		int balas = 10;
 		int vida = 50;
@@ -655,7 +653,6 @@ public class PROJECT {
 			}
 	
 	public static void entrou(int a) {
-		Scanner scan = new Scanner(System.in);
 		int balas = 10;
 		int vida = 50;
 		int chave1 = 0;
@@ -769,7 +766,6 @@ public class PROJECT {
 	}
 	
 	public static int caminho1(int a) {
-		Scanner scan = new Scanner(System.in);
 		int t = 0;
 		int fim = 0;
 		String resp = "";
@@ -796,7 +792,6 @@ public class PROJECT {
 		
 	}
 	public static int caminho2(int a) {
-		Scanner scan = new Scanner(System.in);
 		int fim = 0;
 		int t = 1;
 		int caminho = 0;
@@ -872,7 +867,6 @@ public class PROJECT {
 		}
 	
 	public static int caminho3(int a) {
-		Scanner scan = new Scanner(System.in);
 		int t = 0;
 		int caminho = 0;
 		int fim = 0;
@@ -900,7 +894,6 @@ public class PROJECT {
 		}
 	
 	public static int caminho4(int a) {
-		Scanner scan = new Scanner(System.in);
 		int t = 0;
 		int caminho = 0;
 		int t2 = 1;
@@ -963,7 +956,6 @@ public class PROJECT {
 	}
 	
 	public static int caminho5(int a) {
-		Scanner scan = new Scanner(System.in);
 		int t = 0;
 		int caminho = 0;
 		int t2 = 2;
@@ -1023,7 +1015,6 @@ public class PROJECT {
 		return caminho;
 	}
 	public static int caminho6(int a) {
-		Scanner scan = new Scanner(System.in);
 		int t = 0;
 		int fim = 0;
 		String resp = "";
@@ -1126,7 +1117,6 @@ public static void Fase3Final(){
   
 
   public static void fase3guardacostas (int a){
-      Scanner scan = new Scanner (System.in);
   System.out.println(" General - Soldado, seu aliados estão a caminho de derrotar o inimigo e salvar o cientista\n"
     + ", Sua missão principal é destruir a nave mãe dos alienigenas para acabar com qualquer chance de uma nova invasão a nossa terra ! Sabotando  a nave chame a atenção dos guardas para que a equipe 1 consiga salvar o cientista. \n"
     + " Esse caça que você está com o Capitão Jorge vai passar pela rota 70 metros acima da nave inimiga para não ser identificado, você deve saltar do avião e aterrisar furtivamente na nave inimiga, boa sorte na sua missão, o futuro da nossa raça está em suas mãos.\n"      
@@ -1204,7 +1194,6 @@ public static void Fase3Final(){
     
 
  public static void Inicio(int a) {
-			Scanner scan = new Scanner(System.in);
 			String resp = "";
 			int fim = 0;
 			System.out.println("No ano de 2040, Em razao da evolução da medicina as pessoas pararam de morrer por envelhecimento,\n "
@@ -1254,7 +1243,6 @@ public static void Fase3Final(){
 
 //missão dois, começo.
 public static void Missao2(int a) {
-	Scanner scan = new Scanner(System.in);
 	int sala = 1;
 	System.out.println("GENERAL-Equanto estamos nos encaminhando para o planeta, nossa nave acaba sendo interceptada\n"
 			+ "pelos inimigos. Eles ja conseguiram entrar, nos juntamos a equipe para decidir qual será\n"
@@ -1290,7 +1278,6 @@ public static void Missao2(int a) {
 		}
 	}
 	public static int sala1(int a) {
-		Scanner scan = new Scanner(System.in);
 		int sala = 0;
 		System.out.println("Você está em uma sala, existem tres portas, uma ao norte, você so deve avançar por essa após achar os materiais,\n"
 				+ " uma a leste e uma a oeste, para qual voce deve seguir?");
@@ -1316,7 +1303,6 @@ public static void Missao2(int a) {
 		return sala;
 	}
 	public static int sala2(int a) {
-		Scanner scan = new Scanner(System.in);
 		int fim = 0;
 		int sala = 1;
 		int map = 0;
@@ -1363,7 +1349,6 @@ public static void Missao2(int a) {
 		return sala;
 	}
 	public static int sala3(int a) {
-		Scanner scan = new Scanner(System.in);
 		int fim = 0;
 		int sala = 1;
 		int detonador = 0;
@@ -1425,7 +1410,6 @@ public static void Missao2(int a) {
 	
 	//labirinto!!
 	public static int s1(int a) {
-		Scanner scan = new Scanner(System.in);
 		int s = 1;
 		int fim = 0;
 		String resp = "";
@@ -1442,7 +1426,6 @@ public static void Missao2(int a) {
 		return s;
 	}
 	public static int s2(int a) {
-		Scanner scan = new Scanner(System.in);
 		int s = 2;
 		int fim = 0;
 		String resp = "";
@@ -1457,7 +1440,6 @@ public static void Missao2(int a) {
 		return s;
 	}
 	public static int s3(int a) {
-		Scanner scan = new Scanner(System.in);
 		int s = 2;
 		int fim = 0;
 		System.out.println("Você está em uma sala sem saida, você volta para a sala anterior");
@@ -1465,7 +1447,6 @@ public static void Missao2(int a) {
 		return s;
 	}
 	public static int s4(int a) {
-		Scanner scan = new Scanner(System.in);
 		int s = 2;
 		int fim = 0;
 		String resp = "";
@@ -1483,7 +1464,6 @@ public static void Missao2(int a) {
 		return s;
 	}
 	public static int s5(int a) {
-		Scanner scan = new Scanner(System.in);
 		int s = 2;
 		int fim = 0;
 		String resp = "";
@@ -1501,7 +1481,6 @@ public static void Missao2(int a) {
 		return s;
 	}
 	public static int s7(int a) {
-		Scanner scan = new Scanner(System.in);
 		int s = 5;
 		int fim = 0;
 		System.out.println("Você está em uma sala sem saida, você volta para a sala anterior");
@@ -1509,7 +1488,6 @@ public static void Missao2(int a) {
 		return s;
 	}
 	public static int s6(int a) {
-		Scanner scan = new Scanner(System.in);
 		int s = 5;
 		int fim = 0;
 		System.out.println("Você está em uma sala sem saida, você volta para a sala anterior");
@@ -1518,7 +1496,6 @@ public static void Missao2(int a) {
 	}
 
 	public static int s8(int a) {
-		Scanner scan = new Scanner(System.in);
 		int s = 2;
 		int fim = 0;
 		String resp = "";
@@ -1535,7 +1512,6 @@ public static void Missao2(int a) {
 		return s;
 	}
 	public static int s9(int a) {
-		Scanner scan = new Scanner(System.in);
 		int s = 8;
 		int fim = 0;
 		System.out.println("Você está em uma sala sem saida, você volta para a sala anterior");
@@ -1543,7 +1519,6 @@ public static void Missao2(int a) {
 		return s;
 	}
 	public static int s10(int a) {
-		Scanner scan = new Scanner(System.in);
 		int s = 11;
 		int fim = 0;
 		System.out.println("Você encontrou a nave, porem existem inimigos guardando elas e você deve elimina-los.");
@@ -1793,7 +1768,6 @@ public static void Missao2(int a) {
 	}
 	
 	public static int c1(int a) {
-		Scanner scan = new Scanner(System.in);
 		int s = 1;
 		int fim = 0;
 		String resp = "";
@@ -1812,7 +1786,6 @@ public static void Missao2(int a) {
 		return s;
 		}
 		public static int c2(int a) {
-			Scanner scan = new Scanner(System.in);
 			int s = 1;
 			int fim = 0;
 			String resp = "";
@@ -1830,7 +1803,6 @@ public static void Missao2(int a) {
 			return s;
 		}
 		public static int c3(int a) {
-			Scanner scan = new Scanner(System.in);
 			int s = 1;
 			int fim = 0;
 			String resp = "";
