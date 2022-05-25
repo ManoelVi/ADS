@@ -1530,8 +1530,8 @@ public static void Missao2(int a) {
 
 	}
 
- public class WAVE{
-    public void main(String[] args){
+ 
+    public Static void Wave(){
       
 		int t = 1;
 		int balas = 10;
@@ -1752,5 +1752,80 @@ public static void Missao2(int a) {
       }
 			}
 }
+   public static void ExplodirNave(int a) {
+		int sala = 1;
+		while (sala != 4) {
+			if(sala == 1) {
+				sala = c1(sala);
+			}else if(sala == 2) {
+				sala = c2(sala);
+			}else if(sala == 3) {
+				sala = c3(sala);
+			}
+		}
+		System.out.println("Você passou para a proxima sala, você avista inimigos a frente");
+		Wave;
+		System.out.println("Você passou pelos inimigos, porem na sala seguinte existe um guarda, assegurando a posição onde você deve instalar a bomba, \n"
+				+ "ele aparenta ser mais forte que os outros");
+		Wave2;
+	}
+	
+	public static int c1(int a) {
+		Scanner scan = new Scanner(System.in);
+		int s = 1;
+		int fim = 0;
+		String resp = "";
+		System.out.println("Você está em uma sala, existem tres portas, uma a lestez uma a oeste e uma a norte, para seguir para a luta, para qual voce deve seguir?");
+		String sala = scan.nextLine().toLowerCase();
+		resp = Repeticao("1-LESTE\n2-OESTE","LESTE OESTE");
+		if(resp.equals("LESTE")) {
+			System.out.println("Você entrou na sala OESTE");
+			s = 2;
+		}else if(resp.equals("OESTE")){
+			System.out.println("Você entrou na sala LESTE");
+			s = 3;}
+		else if(resp.equals("NORTE")){
+			System.out.println("Você entrou na sala LESTE");
+			s = 4;}
+		return s;
+		}
+		public static int c2(int a) {
+			Scanner scan = new Scanner(System.in);
+			int s = 1;
+			int fim = 0;
+			String resp = "";
+			System.out.println("Você está em uma sala, existem um equipamento para sua arma, para aumentar a capacidade de munição, deseja pegar?");
+			String sala = scan.nextLine().toLowerCase();
+			resp = Repeticao("1-SIM\n2-NAO","SIM NAO");
+			if(resp.equals("SIM")) {
+				System.out.println("Você pegou o item");
+				
+			}else if(resp.equals("NAO")){
+				System.out.println("Você não pegou o item");
+				
+			}
+			System.out.println("Você volta para a sala anterior");
+			return s;
+		}
+		public static int c3(int a) {
+			Scanner scan = new Scanner(System.in);
+			int s = 1;
+			int fim = 0;
+			String resp = "";
+			System.out.println("Você está em uma sala, existem um colete que serve para aumentar sua vida maxima, deseja pegar?");
+			String sala = scan.nextLine().toLowerCase();
+			resp = Repeticao("1-SIM\n2-NAO","SIM NAO");
+			if(resp.equals("SIM")) {
+				System.out.println("Você pegou o item");
+				
+			}else if(resp.equals("NAO")){
+				System.out.println("Você não pegou o item");
+				
+			}
+			System.out.println("Você volta para a sala anterior");
+			return s;
+		}
+		
+
 	   
 }
