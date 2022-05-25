@@ -14,6 +14,8 @@ import java.util.Scanner;
 public class PROJECT {
     public static int[] Status;
     public static String Nome = "";
+    public static int[] Nivel;
+  
     Scanner scan = new Scanner(System.in);
     
     public static void main(String[] args) {
@@ -25,8 +27,11 @@ public class PROJECT {
       Status[5] = 3;//PoteMana
       Status[6] = 3;//PoteVida
       Status[7] = 3;//Granadas
-      Status[8] = 0;//fase
+      Status[8] = 0;//Proteção
       Status[9] = 0;//poder
+
+      Nivel[0] = 1;//Nivel
+      Nivel[1] = 0;//XP
     }
       public static void dano1(int a) {
   		status[0] = status[0] - 5;
@@ -62,8 +67,18 @@ public class PROJECT {
   }
   
   public static void PoteMana(int a) {
-    if (status[5] > 0 && status[2] = 0){
+    if (status[5] > 0 && status[2] == 0){
       status[2]= 2;
+      status[5] = status[5] - 1;
+    }else{
+      System.out.println("Você pode não ter mais potes de mana, ou ainda lhe sobram cargas de poder");
+    }
+  }
+
+  public static void PoteVida(int a) {
+    if (status[6] > 0){
+      status[0] = status[0] + 15 ;
+      status[6] = status[6] - 1;
     }else{
       System.out.println("Você pode não ter mais potes de mana, ou ainda lhe sobram cargas de poder");
     }
@@ -1514,10 +1529,10 @@ public static void Missao2(int a) {
 		return s;
 
 	}
-		import java.util.Scanner;
+
  public class WAVE{
     public void main(String[] args){
-    Scanner scan = new Scanner(System.in);
+      
 		int t = 1;
 		int balas = 10;
 		int vida = 50;
@@ -1699,6 +1714,42 @@ public static void Missao2(int a) {
 							
 					}	
 				} 
+
+      public static void Wave2(){
+        System.out.println("Começamos uma luta");
+
+        int vida = 50;
+        do{
+          System.out.println("O que deseja fazer?");
+          String resp = Repeticao(" 1-MIRAR \n 2-ATIRAR \n 3-USAR POTE \n 4-ATIVAR PROTEÇÃO","MIRAR , ATIRAR , USAR POTE , ATIVAR PROTEÇÃO");
+
+          if(resp.contains("MIRAR")){
+            vida = vida - 10;
+          }else if(resp.contains("ATIRAR"){
+            if(Sorteio()){
+              vida = vida - 10;
+            }else{
+              vida = vida - 5;
+            } 
+          }else if(resp.contains("USAR") || resp.contains("POTE")){
+            PoteVida();
+          }else if(resp.contains("ATIRAR") || resp.contains("PROTEÇÃO")){
+            status[8] ++;
+          }
+
+          int randon = (int)(Math.random() * 4);
+
+          if(randon == 0){
+            dano1();
+          }else if(randon == 1){
+            vida = vida + 5;
+          }else if(randon == 2){
+            
+          }
+          
+          
+        }
+      }
 			}
 }
 	   
