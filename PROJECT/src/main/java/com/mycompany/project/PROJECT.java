@@ -13,7 +13,7 @@ import java.util.Scanner;
  */
 public class PROJECT {
     public static int[] Status;
-    public static String Nome = "";
+    public static String Nome;
     public static int[] Nivel;
   
     Scanner scan = new Scanner(System.in);
@@ -32,6 +32,22 @@ public class PROJECT {
 
       Nivel[0] = 1;//Nivel
       Nivel[1] = 0;//XP
+
+      Nome[0] = "";
+
+      inicio(1);
+      PrimeiraFase(1);
+      Missao2(1);
+      System.out.println("GENERAL- Finalmente nos conseguimos chegar no planeta com a nave reserva e com todos em segurança, devemos agir rapido, entrar e sair do planeta o mais rapido possivel e em segurança. Iremos dividir nossos super soldados e cada um terá um objetivo, serão três no total. Cada um terá um objetivo, e todos devem cumprir sua respectivas missões, so assim teremos sucesso em nosso objetivo. ");
+      System.out.println("GENERAL- "+ Nome[0]+ "poderá escolher primeiro qual a missão deseja cumprir, as missoes são:\n1-Entrar furtivamente na instalação em que o cientista esta, resgata-lo e traze-lo em segurança para partimos de volta para a terra.\n2- Criar uma distração para que as outras duas partes possam cumprir sua missão\n3- Enfrentar o lider do planeta, para acabar com a guerra de uma vez por todas.\nQual missão você deseja cumprir?");
+      String resp = Repeticao("1-RESGATE\n2-DISTRAÇÃO\n3-CHEFE", "RESGATE DISTRAÇÃO CHEFE");
+      if(resp.equals("RESGATE")){
+        fase3(1);
+      }else if(resp.equals("DISTRAÇÃO")){
+        fase3guardacostas(1);
+      }else if(resp.equals("CHEFE")){
+        Fase3Chefe();
+      }
     }
       public static void dano1(int a) {
   		status[0] = status[0] - 5;
@@ -635,6 +651,7 @@ public class PROJECT {
 							
 					}	
 				}//primeiro if/else
+      entrou(1);
 			}
 	
 	public static void entrou(int a) {
@@ -728,7 +745,7 @@ public class PROJECT {
 				}break;
 			}
 		}//while 1
-		
+		salas(1);
 	}
 	
 	public static void salas(int a) {
@@ -1202,7 +1219,7 @@ if (t == 1 ) {
 					+ "soldados foram criados e treinados para o combate.\n"
 					+ "É ai que você nasceu, na primeira leva de super soldados\n");
 			System.out.println("\n Qual o seu nome?");
-			nome = scan.next();
+			Nome[0] = scan.nextLine();
 			
 			String poder = "";
 			System.out.println("Muito bem "+ nome +", agora escolha a sua classe digitando o numero referente a cada uma delas:");
@@ -1264,7 +1281,9 @@ public static void Missao2(int a) {
 			int s = 1;
 			labirinto(1);
 		}else {
-			
+			System.out.println("GENERAL- Você decidiu usar o explosivo, boa sorte, \n"
+					+ "cuidado com possiveis obstaculos pelo caminho");
+      ExplodirNave(1);
 		}
 	}
 	public static int sala1(int a) {
