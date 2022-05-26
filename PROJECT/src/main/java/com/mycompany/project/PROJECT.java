@@ -3,10 +3,10 @@ package com.mycompany.project;
 import java.util.Scanner;
 
 public class PROJECT {
-    public static int[] Status;
+    public static int[] Status = new int[10];
     public static String Nome;
-    public static int[] Nivel;
-    public static int[] itens;
+    public static int[] Nivel = new int[2];
+    public static int[] itens = new int[2];
   
     public static Scanner scan = new Scanner(System.in);
     
