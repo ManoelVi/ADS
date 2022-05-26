@@ -15,6 +15,7 @@ public class PROJECT {
     public static int[] Status;
     public static String Nome;
     public static int[] Nivel;
+    public static int[] itens;
   
     public static Scanner scan = new Scanner(System.in);
     
