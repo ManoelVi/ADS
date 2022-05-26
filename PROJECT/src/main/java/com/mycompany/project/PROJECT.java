@@ -568,7 +568,11 @@ public static void Fase3() {
 				caminho = caminho5(caminho);
 			}else if(caminho == 6) {
 				caminho = caminho6(caminho);
-			}
+			}else if(caminho == 7) {
+					caminho = caminho7(caminho);
+				}if(caminho == 8) {
+					caminho = caminho8(caminho);
+				}
 		}
 	}
 	
@@ -733,8 +737,32 @@ public static void Fase3() {
 			return caminho;
 				
 		}
-	//fim caminho 6
 
+	//fim caminho 6
+public static int caminho7(int a) {
+				System.out.println("Voce se depara com alguns guardas fazendo a segurança da chave para a cela do cientista, você deve lutar para conseguir\n"
+						+ "a chave e liberta-lo");
+				Wave2();
+				System.out.println("Você conseguiu a chave");
+				Status[3] = 1;
+				return 6;
+						
+			}
+			public static int caminho8(int a) {
+				System.out.println("Voce entrou na sala e se deparou com o cientista, você precisa resolver um puzzle para liberta-lo");
+				System.out.println("Responda a charada corretamente: ");
+				String resp = Repeticao("Sempre quando chego trago a tristeza\r\n"
+						+ "Mas sempre chego na hora certa\r\n"
+						+ "As vezes venho depois de uma doença\r\n"
+						+ "E outras, depois de um ato de violência", "TEMPO");
+				if(resp.equals("TEMPO")) {
+					System.out.println("PARABENS SOLDADO, você conseguiu cumprir sua missao, volte para a base para voltarmos ao nosso planeta.");
+				}
+				return 6;
+						
+			}
+
+  
   public static void Fase3Chefe(){
     String resp = Repeticao("Vamos atrás do maioral deste planeta imundo, Vamos para NORTE agora","NORTE");
     
@@ -1216,6 +1244,8 @@ public static void Fase3Final(){
 			int s = 11;
 			int fim = 0;
 			System.out.println("VocÃª encontrou a nave, porem existem inimigos guardando elas e vocÃª deve elimina-los.");
+				Wave2();
+			System.out.println("Parabens soldado,conseguimos chegar na nave em segurança");
 			
 			return s;
                 }                   
