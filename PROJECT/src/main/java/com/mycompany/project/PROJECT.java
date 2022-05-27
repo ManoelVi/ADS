@@ -120,6 +120,22 @@ public class PROJECT {
 
         if(vida <= 0){
           System.out.println("Você venceu, parabéns");
+          
+          Nivel[0] = 1;//Nivel
+          Nivel[1] = 0;//XP
+          if(Sorteio()){
+            Nivel[1] = Nivel[1] + 68;
+          }else{
+              Nivel[1] = Nivel[1] + 19;
+          }
+          
+          if(Nivel[1] >= 100){
+              Nivel[0] = Nivel[0] + 1;
+              Nivel[1] = 0;
+              System.out.println("");
+              System.out.println("Voce subiu de nivel, parabéns");
+          }
+              
         }else{
           System.out.println("Você perdeu, deseja recomeçar?");
           String resp = scan.nextLine();
