@@ -614,8 +614,8 @@ public class PROJECT {
 				}
 			}
 			System.out.println("Você passou para a proxima sala, você avista inimigos a frente");
-			Wave2();
-			System.out.println("Você passou pelos inimigos, porem na sala seguinte existe um guarda, assegurando a posição onde você deve instalar a bomba, \n"
+			Wave1();
+			System.out.println("Você passou pelo inimigo, porem na sala seguinte existe um guarda, assegurando a posição onde você deve instalar a bomba, \n"
 					+ "ele aparenta ser mais forte que os outros");
 			Wave2();
 		}
@@ -1299,4 +1299,46 @@ public class PROJECT {
 				+ "e abatemos os lideres, o que ira os abalar, com certeza a guerra tera outro fim, graças\n"
 				+ "aos nossos super soldados. Agora voltaremos para casa.");
 	}
+  	public static void Wave1() {
+		String resp = "";
+		int vida = 50;
+		while(vida > 0) {
+			System.out.println("voce se depara um guarda a sua frente, e inicia uma batalha com ele.");	
+			System.out.println("Voce deseja dar um soco, um tiro ou usar seu poder nele?");
+			resp = Repeticao("1-SOCO 2-TIRO 3-PODER", "SOCO TIRO PODER");
+			if(resp.equals("SOCO")) {
+				System.out.println("Voce acerta o soco no inimigo e tira 10 de vida dele");
+				vida = vida - 10;
+			}else if(resp.equals("TIRO")) {
+				if(Status[1] > 0) {
+					System.out.println("voce acerta o tiro no inimigo e da 20 de dano nele, porem perde uma bala");
+					vida = vida - 20;
+					atirar();
+				}else
+					System.out.println("voce nao tem municao, nada acontece");
+			}else if(resp.equals("PODER")) {
+				if(Status[2] > 0) {
+					if(Status[9] == 1) {
+						System.out.println("Voce voa na direcao do inimigo e da um poderoso golpe, tirando 20 de vida dele");
+						vida = vida - 20;
+						MenosMana();
+					}else if(Status[9] == 2) {
+						System.out.println("Voce usa sua super forca para dar um poderoso golpe, tirando 20 de vida dele");
+						vida = vida - 20;
+						MenosMana();
+					}else if(Status[9] == 3) {
+						System.out.println("Com o poder da sua mente, voce da um poderoso golpe em seu inimigo, tirando 20 de vida dele");
+						vida = vida - 20;
+						MenosMana();
+					}
+				}else
+					System.out.println("Voce nao possui mana, nada acontece");
+				
+			}
+		System.out.println("Seu adversario acerta um golpe em voce, dando 5 de dano");
+		dano1();
+		System.out.println("Sua vida:"+ Status[0]+ "\nSua mana:"+ Status[2]+ "\nSua minicao:"+ Status[1]);
+		System.out.println("Vida do adversario:"+ vida);
+		}
+	
 }
