@@ -1455,7 +1455,7 @@ public class PROJECT {
 			}
 		System.out.println("Seu adversario acerta um golpe em voce, dando 5 de dano");
 		dano1();
-		System.out.println("Sua vida:"+ Status[0]+ "\nSua mana:"+ Status[2]+ "\nSua minicao:"+ Status[1]);
+		System.out.println("Sua vida:"+ Status[0]+ "\nSua mana:"+ Status[2]+ "\nSua municao:"+ Status[1]);
 		System.out.println("Vida do adversario:"+ vida);
 		}
 	
