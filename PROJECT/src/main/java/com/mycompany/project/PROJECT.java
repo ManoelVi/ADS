@@ -40,6 +40,7 @@ public class PROJECT {
       }else if(resp.equals("CHEFE")){
         Fase3Chefe();
       }
+      Finalizar();
     }
   public static void Wave2(){
        System.out.println("Começamos uma luta");
@@ -1144,7 +1145,7 @@ public class PROJECT {
 			if(resp.equals("TEMPO")) {
 				System.out.println("PARABENS SOLDADO, você conseguiu cumprir sua missao, volte para a base para voltarmos ao nosso planeta.");
 			}
-					
+			Finalizar();		
 		}
 	public static void Fase3guardacostas (){
 		  System.out.println(" General - Soldado, seu aliados estão a caminho de derrotar o inimigo e salvar o cientista\n"
@@ -1292,5 +1293,10 @@ public class PROJECT {
 	  }else{
 	    Fase3Caminho1();
 	  }
-	}   
+	} 
+  public static void Finalizar() {
+		System.out.println("GENERAL- Parabens soldado, nos conseguimos cumprir nossa missao. Salvamos o cientista e abatemos\n"
+				+ "e abatemos os lideres, o que ira os abalar, com certeza a guerra tera outro fim, graças\n"
+				+ "aos nossos super soldados. Agora voltaremos para casa.");
+	}
 }
