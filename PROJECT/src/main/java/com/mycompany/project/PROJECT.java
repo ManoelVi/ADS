@@ -211,13 +211,12 @@ public class PROJECT {
      }    
  }
  
- public static void MostrarStatus(String local, boolean poder){
+ public static void MostrarStatus( boolean poder){
    System.out.println("");
    System.out.println("Vida: " + Status[0] +"\n" +
                      "Poder: " + Status[2] +"\n" +
                      "Balas na arma: " + Status[1] + "\n" +
                      "Munição: "+ Status[4] +
-                     "Local: " + local +
                      "Potes de mana: " + Status[5] +"\n" +
                      "Potes de vida: " + Status[6]);
    
@@ -239,9 +238,10 @@ public class PROJECT {
 	        Config(lcRosa.substring(6));
 	      }
 
-	      //MostrarStatus(,false);
+	      //
 	    }while(!Resp.contains(lcRosa));
 
+            MostrarStatus(false);
 	    return lcRosa;
 	  }
  
@@ -296,46 +296,47 @@ public class PROJECT {
      String lcTutorial = Repeticao("Deseja jogar o tutorial?","SIM,NAO");
      
      if ("SIM".equals(lcTutorial.toUpperCase())){
-       System.out.println("Bem vindo a área de treino da Atlas!\n"
+       System.out.println("-Bem vindo a área de treino da Atlas!\n"
                          + " aqui você vai aprender os comandos básicos e funcionalidades da sua equipe!");
        System.out.println("");
-       System.out.println("Vamos começar!");
+       System.out.println("-Vamos começar!");
        System.out.println("");
        
-       String lcRosa = Repeticao("Estamos na entrada, digite NORTE para entrar no campo.","NORTE");
+       String lcRosa = Repeticao("-Estamos na entrada, digite NORTE para entrar no campo.","NORTE");
        
+       System.out.println("");
        System.out.println("Entramos no stand de tiros.");
        
-       String lcPegar = Repeticao("digite PEGAR RIFLE para pegar sua arma inicial.","PEGAR RIFLE");
+       String lcPegar = Repeticao("-digite PEGAR RIFLE para pegar sua arma inicial.","PEGAR RIFLE");
        
-       String lcEscolha = Repeticao("Temos alguns alvos a frente, você pode MIRAR para ter melhor precisão, ou ATIRAR aleatóriamente.\n"                               +"A escolha é sua agora!","MIRAR,ATIRAR");
+       String lcEscolha = Repeticao("-Temos alguns alvos a frente, você pode MIRAR para ter melhor precisão, ou ATIRAR aleatóriamente.\n"                               +"A escolha é sua agora!","MIRAR,ATIRAR");
        
        do{
          if(lcEscolha.equals("MIRAR")){
-           System.out.println("Tiros perfeitos, parabéns!");
+           System.out.println("-Tiros perfeitos, parabéns!");
          }else{
            boolean llTiro = Sorteio();
            
            if(llTiro){
-             System.out.println("Tiros perfeitos, parabéns!");
+             System.out.println("-Tiros perfeitos, parabéns!");
            }else{
-             System.out.println("Você errou, mais sorte na próxima vez!");
+             System.out.println("-Você errou, mais sorte na próxima vez!");
            }
          }
-         System.out.println("Deseja passar para a próxima etapa agora? você pode ficar aqui mais um tempo se quiser.");
+         System.out.println("-Deseja passar para a próxima etapa agora? você pode ficar aqui mais um tempo se quiser.");
          lcEscolha = scan.next();
          
-         if(!lcEscolha.equals("SIM")){
-           System.out.println("Pode MIRAR ou ATIRAR novamente.");
+         if(!lcEscolha.contains("N")){
+           System.out.println("-Pode MIRAR ou ATIRAR novamente.");
          }
-       }while(lcEscolha.equals("SIM"));
+       }while(lcEscolha.contains("N"));
        
-       lcRosa = Repeticao("Vamos ver se já sabe usar um pouco das coisas que adicionaram no seu corpo.\n"
+       lcRosa = Repeticao("-Vamos ver se já sabe usar um pouco das coisas que adicionaram no seu corpo.\n"
              + "digite LESTE para ir para a área livre","LESTE");
        
-       System.out.println("Na área livre você pode testar granadas, estilos de combate e seus poderes.");
+       System.out.println("-Na área livre você pode testar granadas, estilos de combate e seus poderes.");
        
-       System.out.println("Vamos começar pelas granadas, elas são ajustadas para seguir aqueles bichos, então fique tranquilo quanto a mira;");
+       System.out.println("-Vamos começar pelas granadas, elas são ajustadas para seguir aqueles bichos, então fique tranquilo quanto a mira;");
        System.out.println("(Os bonecos nessa área estão sujos com aquela gosma dos visitantes.)");
        
        lcEscolha = Repeticao("Digite LANÇAR GRANADA e veja o que acontece","LANÇAR GRANADA");
@@ -366,14 +367,14 @@ public class PROJECT {
                  System.out.println("- Você usa seu poder para levantar o boneco e jogar na parede.");
          }       
        }
-       System.out.println("Boa jogada, um caixote não me parece um lugar ideal para de esconder!");
+       System.out.println("-Boa jogada, um caixote não me parece um lugar ideal para de esconder!");
            
-       System.out.println("A partir daqui pode passar para NORTE, não tem mais problemas!");
+       System.out.println("-A partir daqui pode passar para NORTE, não tem mais problemas!");
          
-       lcRosa = Repeticao("Pode passar para NORTE","NORTE");
+       lcRosa = Repeticao("-Pode passar para NORTE","NORTE");
    } else  
-   System.out.println("Bem, finalizamos o treinamento.\n"
-           + "Boa sorte na sua próxima missão soldado!");
+   System.out.println("-Bem, finalizamos o treinamento.\n"
+           + "-Boa sorte na sua próxima missão soldado!");
    }
  public static void Missao2() {
 		int sala = 1;
@@ -1346,11 +1347,71 @@ public class PROJECT {
 	    Wave2();
 
 	    System.out.println("Mandou bem, acho que não preciso mais te chamar de soldado, /n quando voltarmos talvez seja coronel ou mais agora!(Risos)");
-	    Fase3Chefe();
+	    Fase3Caminho6();
 	  }else{
 	    Fase3Caminho1();
 	  }
 	} 
+        
+        public static void Fase3Caminho6(){
+            System.out.println("ATENÇAO!!!");
+            System.out.println("Apartir daqui suas escolhas mudam o resto e causam sua morte");
+            
+            System.out.println("-Voce tem visão do general inimigo, ele está de costas, e mas a 2 inimigos aqui");
+            
+            String lcResp = Repeticao("Voce pode tentar passar ESCONDIDO, ou LUTAR voce decide","ESCONDIDO LUTAR");
+            
+            if (lcResp.contains("ESCONDIDO")) {
+             if(Sorteio()){
+                 System.out.println("Voce passou despercebido");
+             }else{
+                 Wave2();
+                 Wave2();
+             }   
+            }else{
+                Wave2();
+                Wave2();
+            }
+            
+            System.out.println("Você ganhou, mas o general te viu, "
+                    + "\n ele parece ser bem maior e mais forte que os outros.");
+            
+            lcResp = Repeticao("Ele ataca o que parece um bloco de madeira, \n voce DESVIA ou BLOQUEIA", "DESVIA ou BLOQUEIA");
+            
+            if(lcResp.contains("DESVIA")){
+                System.out.println("Boa jogada!");
+            }else{
+                System.out.println("Voce bloqueia mas acaba se machucando com isso");
+                dano2();
+            }
+            
+            System.out.println("Ele vem pra cima, correndo como uma locomotiva");
+            lcResp = Repeticao("Voce pode DESVIAR ou ATIRAR nele","DESVIAR,ATIRAR");
+            
+            if(lcResp.contains("ATIRAR")){
+                System.out.println("Seus tiros freneticos acabam acertando um olho dele");
+                System.out.println("O inimigo recebe - 25 de dano");
+                MostrarStatus(false);
+                
+                Wave3(25);
+                
+            }else{
+                System.out.println("Desviar agora não funciona, ele te pega em cheio");
+                System.out.println("enquanto ele te carrega voce só pode bater nele freneticamente");
+                
+                dano2();
+                System.out.println("");
+                System.out.println("Seus socos parecem surtir algum efeito");
+                System.out.println("O inimigo recebe - 15 de dano");
+                MostrarStatus(false);
+                Wave3(15);
+            }
+            
+            System.out.println("Excelente trabalho " +  Nome + "Você fez um ótimo trabalho") ;
+            System.out.println("Vamos voltar pra nave e acabar com essa missão");
+            
+            Finalizar(); 
+        }
   public static void Finalizar() {
 		System.out.println("GENERAL- Parabens soldado, nos conseguimos cumprir nossa missao. Salvamos o cientista e abatemos\n"
 				+ "e abatemos os lideres, o que ira os abalar, com certeza a guerra tera outro fim, graças\n"
@@ -1378,15 +1439,15 @@ public class PROJECT {
 					if(Status[9] == 1) {
 						System.out.println("Voce voa na direcao do inimigo e da um poderoso golpe, tirando 20 de vida dele");
 						vida = vida - 20;
-						MenosMana();
+						PoteMana();
 					}else if(Status[9] == 2) {
 						System.out.println("Voce usa sua super forca para dar um poderoso golpe, tirando 20 de vida dele");
 						vida = vida - 20;
-						MenosMana();
+						PoteMana();
 					}else if(Status[9] == 3) {
 						System.out.println("Com o poder da sua mente, voce da um poderoso golpe em seu inimigo, tirando 20 de vida dele");
 						vida = vida - 20;
-						MenosMana();
+						PoteMana();
 					}
 				}else
 					System.out.println("Voce nao possui mana, nada acontece");
@@ -1398,4 +1459,82 @@ public class PROJECT {
 		System.out.println("Vida do adversario:"+ vida);
 		}
 	
+}
+        
+        public static void Wave3(int dano){
+        System.out.println("Começamos uma luta");
+
+        int vida = 50 - dano;
+        do{
+          System.out.println("O que deseja fazer?");
+          String resp = Repeticao(" 1-MIRAR \n 2-ATIRAR \n 3-USAR POTE \n 4-ATIVAR PROTEÇÃO \n 5-PODER \n 6-GRANADA","MIRAR , ATIRAR , USAR POTE , ATIVAR PROTEÇÃO,PODER,GRANADA");
+
+          if(resp.contains("MIRAR")){
+            vida = vida - 10;
+            System.out.println("Você deu um tiro certeiro no inimigo, e tirou 10 de vida");
+            atirar();
+          }else if(resp.contains("ATIRAR")){
+            if(Sorteio()){
+              vida = vida - 10;
+              System.out.println("Você deu um tiro certeiro no inimigo, e tirou 10 de vida");
+              atirar();
+            }else{
+              System.out.println("Você deu um tiro e errou");
+              atirar();
+            } 
+          }else if(resp.contains("USAR") || resp.contains("POTE")){
+            PoteVida();
+            PoteMana();
+          }else if(resp.contains("ATIVAR") || resp.contains("PROTEÇÃO")){
+            Status[8]++;
+          }else if(resp.contains("PODER")){
+            if(Status[2] > 0){
+              switch(Status[9]){
+            case 1:
+                System.out.println("- Você Bate suas asas, com a corrente de vento o inimigo voa para a parede e se fere. o inimigo recebe "+ 10 * Nivel[0] + " de dano");
+                vida = vida - 10 * Nivel[0];
+                  break;
+            case 2:
+                System.out.println("- Você dá um soco no inimigo, que acaba explodindo ele! O inimigo recebe " + Nivel[0] + "de dano.");
+                vida = vida - 15 * Nivel[0];
+                  break;
+            case 3:
+                System.out.println("- Você usa seu poder para levantar o inimigo e jogar na parede. O inimigo recebe " + 13 * Nivel[0] + "de dano");
+                vida = vida - 13 * Nivel[0];
+                  break;
+        }
+            Status[2] = Status[2] - 1;
+            }
+            
+          }else if(resp.contains("GRANADA")){
+            if(Status[7] > 0){
+              System.out.println("- Você lança uma grana que segue e explode o inimigo ");
+              vida = 0;
+              Granada();
+            }
+          }
+
+          int randon = (int)(Math.random() * 3);
+
+          if(vida > 0){
+            if(randon == 0 ){
+              if( Status[8] > 0){
+                Status[8]--;
+                System.out.println("Seu escudo te protegeu de um tiro");
+              }else{
+                dano2();
+               System.out.println("O inimigo te da um tiro e você recebe 5 de dano.");
+              }  
+          }else if(randon == 1){
+            vida = vida + 10;
+            System.out.println("O inimigo recupera 5 pontos de vida ");
+          }else if(randon == 2){
+            System.out.println("o inimigo te dá um tiro mas erra!");
+          }
+          }
+
+          MostrarStatus(true);
+          System.out.println("o inimigo tem " + vida + "Pontos de vida");
+        }while(vida > 0 && Status[0] > 0);
+        }
 }
