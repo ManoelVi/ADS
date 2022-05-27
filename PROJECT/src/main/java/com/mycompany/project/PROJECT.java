@@ -216,7 +216,7 @@ public class PROJECT {
    System.out.println("Vida: " + Status[0] +"\n" +
                      "Poder: " + Status[2] +"\n" +
                      "Balas na arma: " + Status[1] + "\n" +
-                     "Munição: "+ Status[4] +
+                     "Munição: "+ Status[4] +"\n"+
                      "Potes de mana: " + Status[5] +"\n" +
                      "Potes de vida: " + Status[6]);
    
@@ -1467,7 +1467,7 @@ public class PROJECT {
         int vida = 50 - dano;
         do{
           System.out.println("O que deseja fazer?");
-          String resp = Repeticao(" 1-MIRAR \n 2-ATIRAR \n 3-USAR POTE \n 4-ATIVAR PROTEÇÃO \n 5-PODER \n 6-GRANADA","MIRAR , ATIRAR , USAR POTE , ATIVAR PROTEÇÃO,PODER,GRANADA");
+          String resp = Repeticao(" 1-MIRAR \n 2-ATIRAR \n 3-USAR POTE \n 4-ATIVAR PROTEÇÃO \n 5-PODER \n ","MIRAR , ATIRAR , USAR POTE , ATIVAR PROTEÇÃO,PODER");
 
           if(resp.contains("MIRAR")){
             vida = vida - 10;
@@ -1506,12 +1506,6 @@ public class PROJECT {
             Status[2] = Status[2] - 1;
             }
             
-          }else if(resp.contains("GRANADA")){
-            if(Status[7] > 0){
-              System.out.println("- Você lança uma grana que segue e explode o inimigo ");
-              vida = 0;
-              Granada();
-            }
           }
 
           int randon = (int)(Math.random() * 3);
