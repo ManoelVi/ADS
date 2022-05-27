@@ -1097,7 +1097,7 @@ public class PROJECT {
 								resp = Repeticao("1-ENTRAR 2-VOLTAR", "ENTRAR VOLTAR");
 									if (resp.equals("ENTRAR")) {
 										System.out.println("vocÃª entrou na porta!");
-										caminho8();
+										caminho8(1);
 										
 									}else
 										caminho1();
@@ -1209,7 +1209,7 @@ public class PROJECT {
 			caminho6();
 					
 		}
-	public static void caminho8() {
+	public static void caminho8(int a) {
 			System.out.println("Voce entrou na sala e se deparou com o cientista, você precisa resolver um puzzle para liberta-lo");
 			System.out.println("Responda a charada corretamente: ");
 			String resp = Repeticao("Sempre quando chego trago a tristeza\r\n"
@@ -1218,6 +1218,7 @@ public class PROJECT {
 					+ "E outras, depois de um ato de violência", "TEMPO");
 			if(resp.equals("TEMPO")) {
 				System.out.println("PARABENS SOLDADO, você conseguiu cumprir sua missao, volte para a base para voltarmos ao nosso planeta.");
+                Finalizar();
 			}
 			Finalizar();		
 		}
@@ -1436,8 +1437,8 @@ public class PROJECT {
   	public static void Wave1() {
 		String resp = "";
 		int vida = 50;
-		while(vida > 0) {
-			System.out.println("voce se depara um guarda a sua frente, e inicia uma batalha com ele.");	
+        System.out.println("voce se depara um guarda a sua frente, e inicia uma batalha com ele.");
+		while(vida > 0) {	
 			System.out.println("Voce deseja dar um soco, um tiro ou usar seu poder nele?");
 			resp = Repeticao("1-SOCO 2-TIRO 3-PODER", "SOCO TIRO PODER");
 			if(resp.equals("SOCO")) {
@@ -1455,15 +1456,15 @@ public class PROJECT {
 					if(Status[9] == 1) {
 						System.out.println("Voce voa na direcao do inimigo e da um poderoso golpe, tirando 20 de vida dele");
 						vida = vida - 20;
-						PoteMana();
+						
 					}else if(Status[9] == 2) {
 						System.out.println("Voce usa sua super forca para dar um poderoso golpe, tirando 20 de vida dele");
 						vida = vida - 20;
-						PoteMana();
+						
 					}else if(Status[9] == 3) {
 						System.out.println("Com o poder da sua mente, voce da um poderoso golpe em seu inimigo, tirando 20 de vida dele");
 						vida = vida - 20;
-						PoteMana();
+						
 					}
 				}else
 					System.out.println("Voce nao possui mana, nada acontece");
