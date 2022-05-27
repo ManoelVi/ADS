@@ -43,40 +43,96 @@ public class PROJECT {
       Finalizar();
     }
   public static void Wave2(){
-       System.out.println("Começamos uma luta");
+        System.out.println("Começamos uma luta");
 
-       int vida = 50;
-       do{
-         System.out.println("O que deseja fazer?");
-         String resp = Repeticao(" 1-MIRAR \n 2-ATIRAR \n 3-USAR POTE \n 4-ATIVAR PROTEÇÃO","MIRAR , ATIRAR , USAR POTE , ATIVAR PROTEÇÃO");
+        int vida = 50;
+        do{
+          System.out.println("O que deseja fazer?");
+          String resp = Repeticao(" 1-MIRAR \n 2-ATIRAR \n 3-USAR POTE \n 4-ATIVAR PROTEÇÃO \n 5-PODER \n 6-GRANADA","MIRAR , ATIRAR , USAR POTE , ATIVAR PROTEÇÃO,PODER,GRANADA");
 
-         if(resp.contains("MIRAR")){
-           vida = vida - 10;
-         }else if(resp.contains("ATIRAR")){
-           if(Sorteio()){
-             vida = vida - 10;
-           }else{
-             vida = vida - 5;
-           } 
-         }else if(resp.contains("USAR") || resp.contains("POTE")){
-           PoteVida();
-         }else if(resp.contains("ATIRAR") || resp.contains("PROTEÇÃO")){
-           Status[8]++;
-         }
+          if(resp.contains("MIRAR")){
+            vida = vida - 10;
+            System.out.println("Você deu um tiro certeiro no inimigo, e tirou 10 de vida");
+            atirar();
+          }else if(resp.contains("ATIRAR")){
+            if(Sorteio()){
+              vida = vida - 10;
+              System.out.println("Você deu um tiro certeiro no inimigo, e tirou 10 de vida");
+              atirar();
+            }else{
+              System.out.println("Você deu um tiro e errou");
+              atirar();
+            } 
+          }else if(resp.contains("USAR") || resp.contains("POTE")){
+            PoteVida();
+            PoteMana();
+          }else if(resp.contains("ATIVAR") || resp.contains("PROTEÇÃO")){
+            Status[8]++;
+          }else if(resp.contains("PODER")){
+            if(Status[2] > 0){
+              switch(Status[9]){
+            case 1:
+                System.out.println("- Você Bate suas asas, com a corrente de vento o inimigo voa para a parede e se fere. o inimigo recebe "+ 10 * Nivel[0] + " de dano");
+                vida = vida - 10 * Nivel[0];
+                  break;
+            case 2:
+                System.out.println("- Você dá um soco no inimigo, que acaba explodindo ele! O inimigo recebe " + Nivel[0] + "de dano.");
+                vida = vida - 15 * Nivel[0];
+                  break;
+            case 3:
+                System.out.println("- Você usa seu poder para levantar o inimigo e jogar na parede. O inimigo recebe " + 13 * Nivel[0] + "de dano");
+                vida = vida - 13 * Nivel[0];
+                  break;
+        }
+            Status[2] = Status[2] - 1;
+            }
+            
+          }else if(resp.contains("GRANADA")){
+            if(Status[7] > 0){
+              System.out.println("- Você lança uma grana que segue e explode o inimigo ");
+              vida = 0;
+              Granada();
+            }
+          }
 
-         int randon = (int)(Math.random() * 4);
+          int randon = (int)(Math.random() * 3);
 
-         if(randon == 0){
-           dano1();
-         }else if(randon == 1){
-           vida = vida + 5;
-         }else if(randon == 2){
-           
-         }
-         
-         
-       }while(vida > 0 || Status[0] > 0);
-       }
+          if(vida > 0){
+            if(randon == 0 ){
+              if( Status[8] > 0){
+                Status[8]--;
+                System.out.println("Seu escudo te protegeu de um tiro");
+              }else{
+                dano1();
+               System.out.println("O inimigo te da um tiro e você recebe 5 de dano.");
+              }  
+          }else if(randon == 1){
+            vida = vida + 5;
+            System.out.println("O inimigo recupera 5 pontos de vida ");
+          }else if(randon == 2){
+            System.out.println("o inimigo te dá um tiro mas erra!");
+          }
+          }
+
+          MostrarStatus(true);
+          System.out.println("o inimigo tem " + vida + "Pontos de vida");
+        }while(vida > 0 && Status[0] > 0);
+
+        if(vida <= 0){
+          System.out.println("Você venceu, parabéns");
+        }else{
+          System.out.println("Você perdeu, deseja recomeçar?");
+          String resp = scan.nextLine();
+
+          if(resp.contains("SIM")){
+            String[] arg = new String[1];
+            main(arg);
+          }else{
+            Config("Sair");
+          }
+        }
+    
+        }
    
    public static void dano1() {
  		Status[0] = Status[0] - 5;
@@ -156,6 +212,7 @@ public class PROJECT {
  }
  
  public static void MostrarStatus(String local, boolean poder){
+   System.out.println("");
    System.out.println("Vida: " + Status[0] +"\n" +
                      "Poder: " + Status[2] +"\n" +
                      "Balas na arma: " + Status[1] + "\n" +
